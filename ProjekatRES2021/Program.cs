@@ -10,7 +10,7 @@ namespace ProjekatRES2021
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("evil troy and evil abeeed");
+            Console.WriteLine("omg hiiiiiiiiiiiii *_*");
             Console.ReadKey();
         }
     }
