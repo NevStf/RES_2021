@@ -11,6 +11,7 @@ namespace ProjekatRES2021
         static void Main(string[] args)
         {
             Console.WriteLine("omg hiiiiiiiiiiiii *_*");
+            Console.WriteLine("Testiramo 3. put kako se pushuje i pulluje");
             Console.ReadKey();
         }
     }
