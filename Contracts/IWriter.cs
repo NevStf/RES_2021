@@ -2,16 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Contracts
 {
+    [ServiceContract]
     public interface IWriter
     {
+        [OperationContract]
         void TurnOnWorker();
+        [OperationContract]
         void TurnOffWorker();
-        void CreateItem(Codes code, double val);
+        [OperationContract]
+        void SendItem(Codes code, double val);
             
     }
 

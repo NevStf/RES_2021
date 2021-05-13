@@ -8,9 +8,6 @@ namespace LoadBalancer
 {
    public class Description
     {
-        int id;
-        List<ServerItem> items;
-        int ds;
 
         public int ID { get; set; }
         public List<ServerItem> Items { get; set; }

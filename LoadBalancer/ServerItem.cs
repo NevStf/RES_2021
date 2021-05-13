@@ -10,9 +10,6 @@ namespace LoadBalancer
 {
     public class ServerItem
     {
-        Codes code;
-        double val; 
-
         public Codes Code { get; set; }
         public double Value { get; set; }
     }

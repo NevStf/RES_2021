@@ -10,10 +10,6 @@ namespace Worker
     [DataContract]
     public class CollectionDescription
     {
-        private int id;
-        private int dataSet;
-        private List<WorkerProperty> historicalCollection;
-        
 
         [DataMember]
         public int ID { get; set; }
