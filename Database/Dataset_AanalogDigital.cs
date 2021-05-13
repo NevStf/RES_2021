@@ -20,7 +20,7 @@ namespace Database
         public double Value2 { get; set; }
 
         [Timestamp]
-        public byte[] Timestamp { get; set; }
+        public byte[] Timestamp { get; set; } 
 
         //[Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         //public DateTime Date { get; set; }

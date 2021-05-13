@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Database
 {
-    public class DatasetContext : DbContext
+    public class DatasetContext : DbContext 
     {
         public DbSet <Dataset_AanalogDigital> Dataset1 { get; set; }
         public DbSet <Dataset_CustomLimit> Dataset2 { get; set; }
