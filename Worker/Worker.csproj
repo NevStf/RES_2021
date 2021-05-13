@@ -48,6 +48,7 @@
     <Compile Include="CollectionDescription.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkerImplement.cs" />
     <Compile Include="WorkerProperty.cs" />
   </ItemGroup>
   <ItemGroup>

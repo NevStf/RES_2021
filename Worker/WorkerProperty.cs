@@ -10,14 +10,13 @@ namespace Worker
     [DataContract]
     public class WorkerProperty
     {
-        private int code;
-        private float workerValue;
+     
 
         [DataMember]
-        public int Code { get => code; set => code = value; }
+        public int Code { get; set; }
 
         [DataMember]
-        public float WorkerValue { get => workerValue; set => workerValue = value; }
+        public float WorkerValue { gets; set; }
 
         public WorkerProperty(int code, float workerValue)
         {
