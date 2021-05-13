@@ -53,18 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Globals\ListCode.cs" />
-    <Compile Include="Globals\Value.cs" />
-    <Compile Include="LoadBalancer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Writer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{24FCF989-C7BE-40E6-9A78-6764F706CB93}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{df383601-7c23-494d-a034-1082f211fc8b}</Project>
       <Name>Database</Name>

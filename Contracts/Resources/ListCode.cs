@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjekatRES2021.Globals
+namespace Contracts.Resources
 {
 
     public enum Codes
     {
-        CODE_ANALOG,
+        CODE_ANALOG = 1, //stavljamo 1 da bi analog imao flag 1, digital 2 ... 
         CODE_DIGITAL,
         CODE_CUSTOM,
         CODE_LIMITSET,
