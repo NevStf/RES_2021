@@ -16,14 +16,14 @@ namespace LoadBalancer
         public Description()
         {
             ID = 0;
-           Items  = null;
+            Items = new List<ServerItem>();
             DataSet = 0;
         }
 
-        public Description(int id, List<ServerItem> si, int ds)
+        public Description(int id, int ds)
         {
             ID = id;
-            Items = si;
+            Items = new List<ServerItem>();
             DataSet = ds;
         }
     }
