@@ -10,9 +10,9 @@ namespace LoadBalancer
 {
     public class LBImplement : ILoadBalancer, IWriter
     {
-        
+
         List<Description> list = new List<Description>();
-        
+
         public void InitList() //inicijalizacija liste descriptiona
         {
             Description d1 = new Description(1, 1);
@@ -33,16 +33,18 @@ namespace LoadBalancer
 
         public void SendItem(Codes code, double value)
         {
-            Console.WriteLine("primio code: " + code + "\nPrimio value: " + value); //fali ifologija i sredjivanje u odnosu na dataset
-            list[0].Items.Add(new ServerItem(code, value));
-            Console.WriteLine(list[0].Items[0].Code);
+            /* Console.WriteLine("primio code: " + code + "\nPrimio value: " + value); //fali ifologija i sredjivanje u odnosu na dataset
+             list[0].Items.Add(new ServerItem(code, value));
+             Console.WriteLine(list[0].Items[0].Code);*/
+
+            if (code == Codes.CODE_ANALOG || code == Codes.CODE_DIGITAL) { list[0].Items.Add(new ServerItem(code, value)); }
+            else if (code == Codes.CODE_CUSTOM || code == Codes.CODE_LIMITSET) { list[1].Items.Add(new ServerItem(code, value)); }
+            else if(code == Codes.CODE_SINGLEONE || code == Codes.CODE_MULTIPLENODE) { list[2].Items.Add(new ServerItem(code, value)); }
+            else { list[3].Items.Add(new ServerItem(code, value));}
+
 
         }
 
-        public void StoreCodes()
-        {
-            
-        }
 
         public void TurnOffWorker()
         {
