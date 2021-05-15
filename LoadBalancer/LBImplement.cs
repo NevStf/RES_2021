@@ -41,19 +41,19 @@ namespace LoadBalancer
 
             if (code == Codes.CODE_ANALOG || code == Codes.CODE_DIGITAL)
             {
-                list[0].Items.Add(new Item(code, value));
+                list[0].Items.Add(si);
             }
             else if (code == Codes.CODE_CUSTOM || code == Codes.CODE_LIMITSET)
             {
-                list[1].Items.Add(new Item(code, value));
+                list[1].Items.Add(si);
             }
             else if (code == Codes.CODE_SINGLEONE || code == Codes.CODE_MULTIPLENODE)
             {
-                list[2].Items.Add(new Item(code, value));
+                list[2].Items.Add(si);
             }
             else
             {
-                list[3].Items.Add(new Item(code, value));
+                list[3].Items.Add(si);
             }
             SendToWorker(si);
         }
