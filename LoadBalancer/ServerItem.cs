@@ -12,5 +12,11 @@ namespace LoadBalancer
     {
         public Codes Code { get; set; }
         public double Value { get; set; }
+
+        public ServerItem(Codes c, double v)
+        {
+            Code = c;
+            Value = v;
+        }
     }
 }

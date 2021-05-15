@@ -15,7 +15,7 @@ namespace ProjekatRES2021
             //using (DatasetContext db = new DatasetContext())
             //{
             //    var DA = new Dataset_AanalogDigital { Code1 = 1, Code2 = 2, Value1 = 76.5, Value2 = 65.5 };
-                
+
 
             //    db.Dataset1.Add(DA);
             //    db.SaveChanges();
@@ -23,14 +23,11 @@ namespace ProjekatRES2021
 
             //}
 
-
             Console.WriteLine("omg hiiiiiiiiiiiii *_*");
             Console.WriteLine("omg hiiiiiiiiiiiii *_*");
             Console.WriteLine("Testiramo 3. put kako se pushuje i pulluje");
             int i = (int)Codes.CODE_ANALOG;
             Console.WriteLine("Testiramo kako broji kodove: " + i + " " + (int)Codes.CODE_DIGITAL);
-            
-
             Console.ReadKey();
             
         }
