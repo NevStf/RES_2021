@@ -16,7 +16,7 @@ namespace Contracts
         [OperationContract]
         void TurnOffWorker();
         [OperationContract]
-        void SendItem(Codes code, double val);
+        void SendItem();
             
     }
 
