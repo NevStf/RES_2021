@@ -16,7 +16,7 @@ namespace Worker
         public int Code { get; set; }
 
         [DataMember]
-        public float WorkerValue { gets; set; }
+        public float WorkerValue { get; set; }
 
         public WorkerProperty(int code, float workerValue)
         {

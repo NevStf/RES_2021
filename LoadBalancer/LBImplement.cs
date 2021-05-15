@@ -16,7 +16,7 @@ namespace LoadBalancer
 
         public void StoreCodes()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
