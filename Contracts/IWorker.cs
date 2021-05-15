@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contracts.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -13,7 +14,7 @@ namespace Contracts
         [OperationContract]
         void SendToBase(); //Slanje u bazu
         [OperationContract]
-        void Repack(); //prpekaivanje za svoju strukturu za rad
+        void Repack(Item i); //prpekaivanje za svoju strukturu za rad
         [OperationContract]
         bool CheckDeadband(double Val);
     }

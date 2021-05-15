@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contracts.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,15 +11,14 @@ namespace Worker
     [DataContract]
     public class WorkerProperty
     {
-     
 
         [DataMember]
-        public int Code { get; set; }
+        public Codes Code { get; set; }
 
         [DataMember]
-        public float WorkerValue { get; set; }
+        public double WorkerValue { get; set; }
 
-        public WorkerProperty(int code, float workerValue)
+        public WorkerProperty(Codes code, double workerValue)
         {
             Code = code;
             WorkerValue = workerValue;

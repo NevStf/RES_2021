@@ -19,7 +19,7 @@ namespace LoadBalancer
                 host.AddServiceEndpoint(typeof(IWriter), binding, address);
 
                 host.Open();
-             
+                
                 Console.ReadKey();
                 host.Close();
             }

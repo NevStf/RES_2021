@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resources\Description.cs" />
+    <Compile Include="Resources\Item.cs" />
     <Compile Include="Resources\ListCode.cs" />
     <Compile Include="ILoadBalancer.cs" />
     <Compile Include="IWorker.cs" />

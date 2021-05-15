@@ -4,26 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoadBalancer
+namespace Contracts.Resources
 {
-   public class Description
+    public class Description
     {
 
         public int ID { get; set; }
-        public List<ServerItem> Items { get; set; }
+        public List<Item> Items { get; set; }
         public int DataSet { get; set; }
 
         public Description()
         {
             ID = 0;
-            Items = new List<ServerItem>();
+            Items = new List<Item>();
             DataSet = 0;
         }
 
         public Description(int id, int ds)
         {
             ID = id;
-            Items = new List<ServerItem>();
+            Items = new List<Item>();
             DataSet = ds;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,10 @@ namespace Worker
             throw new NotImplementedException();
         }
 
-        public void Repack()
+        public void Repack(Item i)
         {
-            throw new NotImplementedException();
+            WorkerProperty wp = new WorkerProperty(i.Code, i.Value);
+            Console.WriteLine(wp.Code + " "+ wp.WorkerValue);
         }
 
         public void SendToBase()

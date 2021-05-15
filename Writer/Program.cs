@@ -14,7 +14,7 @@ namespace Writer
     {
         static void Main(string[] args)
         {
-            ChannelFactory<IWriter> proxy = new ChannelFactory<IWriter>(new NetTcpBinding(),
+           ChannelFactory<IWriter> proxy = new ChannelFactory<IWriter>(new NetTcpBinding(),
            new EndpointAddress("net.tcp://localhost:4000/IWriter"));
 
             IWriter channel = proxy.CreateChannel();
