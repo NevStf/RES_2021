@@ -92,8 +92,9 @@ namespace Worker
                         LCD1[3].HistoricalCollection.Add(new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
                     }
 
-                    Console.WriteLine("Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
+                    Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
                 }
+
             }
         }
 

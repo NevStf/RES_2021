@@ -12,7 +12,7 @@ namespace Contracts
     public interface ILoadBalancer
     {
         [OperationContract]
-        void DistributeWork();
+        void DistributeWork(ListDescription ld);
         [OperationContract]
         void SendToWorker(ListDescription ld);
         

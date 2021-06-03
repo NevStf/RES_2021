@@ -13,6 +13,7 @@ namespace Contracts.Resources
     {
         [DataMember]
         public List<Description> ListOfDescription { get; set; }
-        
+        [DataMember]
+        public int WorkerID { get; set; } //Da znamo kom workeru saljemo koji LD 
     }
 }

@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace LoadBalancer
 {
+   
     public class LBImplement : ILoadBalancer, IWriter
     {
 
         List<Description> list = new List<Description>();
         public static int Brojac = 1; //brojac workera, u pocetku uvek imamo jednog!
+        public static int DistributeCount = 0;
+        static bool  w1 = true, w2 = false, w3 = false, w4 = false; //mora static jer ne radi ako nije staric
         public void InitList() //inicijalizacija liste descriptiona
         {
             Description d1 = new Description(1, 1);
@@ -27,9 +30,53 @@ namespace LoadBalancer
             //Console.WriteLine("asdasdasdasdasdasd");
         }
 
-        public void DistributeWork()
+        public void DistributeWork(ListDescription ld)
         {
-            throw new NotImplementedException();
+            if (DistributeCount == 0)
+            {
+                if (Brojac > 1)
+                {
+                    DistributeCount++;
+                }
+                ld.WorkerID = 1;
+                SendToWorker(ld);
+
+            }
+            else if (DistributeCount == 1)
+            {
+                if (Brojac >= 2 && w3 == true)
+                {
+                    DistributeCount++;
+                }
+                else
+                {
+                    DistributeCount = 0;
+                }
+                ld.WorkerID = 2;
+                SendToWorker(ld);
+
+            }
+            else if (DistributeCount == 2)
+            {
+                if (Brojac >= 3 && w4 == true)
+                {
+                    DistributeCount++;
+                }
+                else
+                {
+                    DistributeCount = 0;
+                }
+                ld.WorkerID = 3;
+                SendToWorker(ld);
+            }
+            else
+            {
+                ld.WorkerID = 4;
+                SendToWorker(ld);
+                DistributeCount = 0;
+            }
+
+
         }
 
         public void WriterToLB(Codes code, double value)
@@ -71,7 +118,7 @@ namespace LoadBalancer
                 list[3].Items.Add(si);
                 ld.ListOfDescription[0].Items.Add(si);
             }
-            SendToWorker(ld);
+            DistributeWork(ld);
         }
         public void SendToWorker(ListDescription ld)
         {
@@ -91,7 +138,19 @@ namespace LoadBalancer
             else
             {
                 Brojac--;
-                Console.WriteLine("Primio sam poruku OFF");
+                if (Brojac == 3)
+                {
+                    w4 = false;
+                }
+                else if (Brojac == 2)
+                {
+                    w3 = false;
+                }
+                else
+                {
+                    w2 = false;
+                }
+                Console.WriteLine("Primio sam poruku i ugasio " + Brojac + ". workera");
             }
         }
 
@@ -104,7 +163,20 @@ namespace LoadBalancer
             else
             {
                 Brojac++;
-                Console.WriteLine("Primio sam poruku ON");
+                if (Brojac == 2)
+                {
+                    w2 = true;
+                }
+                else if (Brojac == 3)
+                {
+                    w3 = true;
+                }
+                else
+                {
+                    w4 = true;
+                }
+
+                Console.WriteLine("Primio sam poruku i ukljucio " + Brojac + ". workera.");
             }
 
         }
