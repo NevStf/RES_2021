@@ -14,8 +14,14 @@ namespace Contracts
         [OperationContract]
         void SendToBase(); //Slanje u bazu
         [OperationContract]
-        void Repack(Item i); //prpekaivanje za svoju strukturu za rad
+        void Repack(ListDescription ld); //prpekaivanje za svoju strukturu za rad
         [OperationContract]
         bool CheckDeadband(double Val);
+        [OperationContract]
+        void RecieveItem(ListDescription ld);
+        [OperationContract]
+        void ITurnOff(); //worker se gasi
+        [OperationContract]
+        void ITurnOn(); //worker se pali 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contracts.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -12,6 +13,9 @@ namespace Contracts
     {
         [OperationContract]
         void DistributeWork();
+        [OperationContract]
+        void SendToWorker(ListDescription ld);
+        
 
     }
 }

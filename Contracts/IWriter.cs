@@ -12,13 +12,16 @@ namespace Contracts
     public interface IWriter
     {
         [OperationContract]
+        [FaultContract(typeof(CustomException))]
         void TurnOnWorker();
         [OperationContract]
+        [FaultContract(typeof(CustomException))]
         void TurnOffWorker();
         [OperationContract]
-        void SendItem(Codes code, double value);
+        void WriterToLB(Codes code, double values);
         [OperationContract]
         void InitList();
+        
     }
 
 }
