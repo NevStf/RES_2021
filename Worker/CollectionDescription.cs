@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contracts.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -37,6 +38,24 @@ namespace Worker
             HistoricalCollection = new List<WorkerProperty>();
             
         }
+
+        public void AddToHistorical(int dataSet, Codes code, double value) 
+        {
+            if (this.DataSet == dataSet) {
+                WorkerProperty wp = new WorkerProperty(code, value);
+                if (this.HistoricalCollection.Count > 0 && this.HistoricalCollection[0].Code == code) 
+                {
+                    this.HistoricalCollection[0] = wp;
+                }
+                else
+                {
+                    this.HistoricalCollection.Add(wp);
+                }
+            }
+        }
+
+
+
     }
 
     

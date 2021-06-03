@@ -20,8 +20,8 @@ namespace Contracts
         [OperationContract]
         void RecieveItem(ListDescription ld);
         [OperationContract]
-        void ITurnOff(); //worker se gasi
+        void ITurnOff(int count); //worker se gasi
         [OperationContract]
-        void ITurnOn(); //worker se pali 
+        void ITurnOn(int count); //worker se pali 
     }
 }

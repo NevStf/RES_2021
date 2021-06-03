@@ -13,9 +13,10 @@ namespace Worker
     public class WorkerImplement : IWorker
     {
         List<CollectionDescription> LCD1 = new List<CollectionDescription>();
-        List<CollectionDescription> LCD2= new List<CollectionDescription>();
+        List<CollectionDescription> LCD2 = new List<CollectionDescription>();
         List<CollectionDescription> LCD3 = new List<CollectionDescription>();
         List<CollectionDescription> LCD4 = new List<CollectionDescription>();
+        bool w1 = true, w2 = false, w3 = false, w4 = false;
 
         public void InitList()
         {
@@ -57,39 +58,56 @@ namespace Worker
 
         public void RecieveItem(ListDescription ld)
         {
-            if (LCD1.Count == 0)
+            if (LCD1.Count == 0 && LCD2.Count == 0 && LCD3.Count == 0 && LCD4.Count == 0)
             {
                 InitList();
             }
             Repack(ld);
-            
-
         }
 
 
         public void Repack(ListDescription ld)
         {
+            if (ld.WorkerID == 1)
+            {
+                GiveToWorker(ld, LCD1);
+            }
+            else if (ld.WorkerID == 2)
+            {
+                GiveToWorker(ld, LCD2);
+            }
+            else if (ld.WorkerID == 3)
+            {
+                GiveToWorker(ld, LCD3);
+            }
+            else
+            {
+                GiveToWorker(ld, LCD4);
+            }
+        }
 
+        public void GiveToWorker(ListDescription ld, List<CollectionDescription> cd)
+        {
             foreach (Description d in ld.ListOfDescription)
             {
                 if (d.Items.Count > 0)
                 {
                     if (d.DataSet == 1)
                     {
-                        LCD1[0].HistoricalCollection.Add(new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
-                        
+                        cd[0].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
+
                     }
                     else if (d.DataSet == 2)
                     {
-                        LCD1[1].HistoricalCollection.Add(new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
+                        cd[1].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
                     }
                     else if (d.DataSet == 3)
                     {
-                        LCD1[2].HistoricalCollection.Add(new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
+                        LCD1[2].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
                     }
                     else
                     {
-                        LCD1[3].HistoricalCollection.Add(new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
+                        LCD1[3].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
                     }
 
                     Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
@@ -103,16 +121,40 @@ namespace Worker
             throw new NotImplementedException();
         }
 
-        public void ITurnOff()
+        public void ITurnOff(int count)
         {
-            throw new NotImplementedException();
+            if (count == 3)
+            {
+                w4 = false;
+            }
+            else if (count == 2)
+            {
+                w3 = false;
+            }
+            else if (count == 1)
+            {
+                w2 = false;
+            }
         }
 
-        public void ITurnOn()
+        public void ITurnOn(int count)
         {
-            throw new NotImplementedException();
+            if (count == 2)
+            {
+                w2 = true;
+            }
+            else if (count == 3)
+            {
+                w3 = true;
+            }
+            else if (count == 4)
+            {
+                w4 = true;
+            }
+
         }
 
-        //public bool
+
+
     }
 }

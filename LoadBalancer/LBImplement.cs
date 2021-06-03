@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace LoadBalancer
 {
-   
+
     public class LBImplement : ILoadBalancer, IWriter
     {
 
         List<Description> list = new List<Description>();
         public static int Brojac = 1; //brojac workera, u pocetku uvek imamo jednog!
         public static int DistributeCount = 0;
-        static bool  w1 = true, w2 = false, w3 = false, w4 = false; //mora static jer ne radi ako nije staric
+        static bool w1 = true, w2 = false, w3 = false, w4 = false; //mora static jer ne radi ako nije staric
         public void InitList() //inicijalizacija liste descriptiona
         {
             Description d1 = new Description(1, 1);
@@ -106,17 +106,17 @@ namespace LoadBalancer
             else if (code == Codes.CODE_CUSTOM || code == Codes.CODE_LIMITSET)
             {
                 list[1].Items.Add(si);
-                ld.ListOfDescription[0].Items.Add(si);
+                ld.ListOfDescription[1].Items.Add(si);
             }
             else if (code == Codes.CODE_SINGLEONE || code == Codes.CODE_MULTIPLENODE)
             {
                 list[2].Items.Add(si);
-                ld.ListOfDescription[0].Items.Add(si);
+                ld.ListOfDescription[2].Items.Add(si);
             }
             else
             {
                 list[3].Items.Add(si);
-                ld.ListOfDescription[0].Items.Add(si);
+                ld.ListOfDescription[3].Items.Add(si);
             }
             DistributeWork(ld);
         }
@@ -138,6 +138,11 @@ namespace LoadBalancer
             else
             {
                 Brojac--;
+                ChannelFactory<IWorker> proxy = new ChannelFactory<IWorker>(new NetTcpBinding(),
+                new EndpointAddress("net.tcp://localhost:5000/IWorker"));
+
+                IWorker worker = proxy.CreateChannel();
+                worker.ITurnOff(Brojac);
                 if (Brojac == 3)
                 {
                     w4 = false;
@@ -152,6 +157,7 @@ namespace LoadBalancer
                 }
                 Console.WriteLine("Primio sam poruku i ugasio " + Brojac + ". workera");
             }
+
         }
 
         public void TurnOnWorker()
@@ -163,6 +169,11 @@ namespace LoadBalancer
             else
             {
                 Brojac++;
+                ChannelFactory<IWorker> proxy = new ChannelFactory<IWorker>(new NetTcpBinding(),
+                new EndpointAddress("net.tcp://localhost:5000/IWorker"));
+
+                IWorker worker = proxy.CreateChannel();
+                worker.ITurnOn(Brojac);
                 if (Brojac == 2)
                 {
                     w2 = true;
