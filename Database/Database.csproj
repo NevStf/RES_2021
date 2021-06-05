@@ -53,8 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\AnalogDigitalAccess.cs" />
+    <Compile Include="DataAccess\ConsumerSourceAccess.cs" />
+    <Compile Include="DataAccess\CustomLimitAccess.cs" />
+    <Compile Include="DataAccess\SingleMultiAccess.cs" />
     <Compile Include="DatasetContext.cs" />
-    <Compile Include="Dataset_AanalogDigital.cs" />
+    <Compile Include="Dataset_AnalogDigital.cs" />
     <Compile Include="Dataset_ConsumerSource.cs" />
     <Compile Include="Dataset_CustomLimit.cs" />
     <Compile Include="Dataset_SingleMulti.cs" />

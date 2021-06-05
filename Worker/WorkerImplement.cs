@@ -1,5 +1,7 @@
 ﻿using Contracts;
 using Contracts.Resources;
+using Database;
+using Database.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,11 @@ namespace Worker
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class WorkerImplement : IWorker
     {
+        AnalogDigitalAccess dataset1Access = new AnalogDigitalAccess();
+        CustomLimitAccess dataset2Access = new CustomLimitAccess();
+        SingleMultiAccess dataset3Access = new SingleMultiAccess();
+        ConsumerSourceAccess dataset4Access = new ConsumerSourceAccess();
+
         List<CollectionDescription> LCD1 = new List<CollectionDescription>();
         List<CollectionDescription> LCD2 = new List<CollectionDescription>();
         List<CollectionDescription> LCD3 = new List<CollectionDescription>();
@@ -20,36 +27,88 @@ namespace Worker
 
         public void InitList()
         {
-            CollectionDescription cd1 = new CollectionDescription(1, 1, new List<WorkerProperty>());
-            CollectionDescription cd2 = new CollectionDescription(2, 2, new List<WorkerProperty>());
-            CollectionDescription cd3 = new CollectionDescription(3, 3, new List<WorkerProperty>());
-            CollectionDescription cd4 = new CollectionDescription(4, 4, new List<WorkerProperty>());
-
             //CD za prvog workera
-            LCD1.Add(cd1);
-            LCD1.Add(cd2);
-            LCD1.Add(cd3);
-            LCD1.Add(cd4);
+            LCD1.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
+            LCD1.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
+            LCD1.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
+            LCD1.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
 
             //za drugog
-            LCD2.Add(cd1);
-            LCD2.Add(cd2);
-            LCD2.Add(cd3);
-            LCD2.Add(cd4);
+            LCD2.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
+            LCD2.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
+            LCD2.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
+            LCD2.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
 
             //za treceg
-            LCD3.Add(cd1);
-            LCD3.Add(cd2);
-            LCD3.Add(cd3);
-            LCD3.Add(cd4);
+            LCD3.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
+            LCD3.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
+            LCD3.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
+            LCD3.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
 
             //za cetvrtog
-            LCD4.Add(cd1);
-            LCD4.Add(cd2);
-            LCD4.Add(cd3);
-            LCD4.Add(cd4);
+            LCD4.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
+            LCD4.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
+            LCD4.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
+            LCD4.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
+
+            //SendToBase();
         }
 
+        //provera da li je dataset popunjem prilikom prvog upisa u bazu 
+        public void CheckDataset(int IDWorker, CollectionDescription cd)
+        {
+            if (cd.HistoricalCollection.Count == 2)
+            {
+                if (cd.DataSet == 1 && dataset1Access.GetAll().Count == 0)
+                {
+                    SendToBaseFirstTime(IDWorker, cd);
+                }
+                else if (cd.DataSet == 2 && dataset2Access.GetAll().Count == 0)
+                {
+                    SendToBaseFirstTime(IDWorker, cd);
+                }
+                else if (cd.DataSet == 3 && dataset3Access.GetAll().Count == 0)
+                {
+                    SendToBaseFirstTime(IDWorker, cd);
+                }
+                else if(cd.DataSet == 4 && dataset4Access.GetAll().Count == 0) 
+                {
+                    SendToBaseFirstTime(IDWorker, cd);
+                }
+            }
+        }
+
+        public void SendToBaseFirstTime(int IDWorker, CollectionDescription cd)
+        {
+            if (cd.DataSet == 1)
+            {
+                Dataset_AnalogDigital DA1 = new Dataset_AnalogDigital { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
+                Dataset_AnalogDigital DA2 = new Dataset_AnalogDigital { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                dataset1Access.Insert(DA1);
+                dataset1Access.Insert(DA2);
+            }
+            if (cd.DataSet == 2)
+            {
+                Dataset_CustomLimit DA1 = new Dataset_CustomLimit { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
+                Dataset_CustomLimit DA2 = new Dataset_CustomLimit { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                dataset2Access.Insert(DA1);
+                dataset2Access.Insert(DA2);
+            }
+            if (cd.DataSet == 3)
+            {
+                Dataset_SingleMulti DA1 = new Dataset_SingleMulti { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
+                Dataset_SingleMulti DA2 = new Dataset_SingleMulti { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                dataset3Access.Insert(DA1);
+                dataset3Access.Insert(DA2);
+            }
+            if (cd.DataSet == 4)
+            {
+                Dataset_ConsumerSource DA1 = new Dataset_ConsumerSource { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
+                Dataset_ConsumerSource DA2 = new Dataset_ConsumerSource { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                dataset4Access.Insert(DA1);
+                dataset4Access.Insert(DA2);
+            }
+        }
 
         public bool CheckDeadband(double Val)
         {
@@ -95,19 +154,22 @@ namespace Worker
                     if (d.DataSet == 1)
                     {
                         cd[0].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
-
+                        CheckDataset(ld.WorkerID, cd[0]);
                     }
                     else if (d.DataSet == 2)
                     {
                         cd[1].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
+                        CheckDataset(ld.WorkerID, cd[1]);
                     }
                     else if (d.DataSet == 3)
                     {
-                        LCD1[2].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
+                        cd[2].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
+                        CheckDataset(ld.WorkerID, cd[2]);
                     }
                     else
                     {
-                        LCD1[3].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
+                        cd[3].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
+                        CheckDataset(ld.WorkerID, cd[3]);
                     }
 
                     Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
@@ -116,10 +178,6 @@ namespace Worker
             }
         }
 
-        public void SendToBase()
-        {
-            throw new NotImplementedException();
-        }
 
         public void ITurnOff(int count)
         {
@@ -154,7 +212,9 @@ namespace Worker
 
         }
 
-
-
+        public void SendToBase()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

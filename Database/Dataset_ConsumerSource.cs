@@ -16,14 +16,13 @@ namespace Database
         public int ID { get; set; }
         public int Code1 { get; set; }
         public double Value1 { get; set; }
-        public int Code2 { get; set; }
-        public double Value2 { get; set; }
 
+        public int IDWorker { get; set; }
         [Timestamp]
         public byte[] Timestamp { get; set; }
 
-        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Date { get; set; }
+        //[Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public DateTime Date { get; set; }
 
 
 

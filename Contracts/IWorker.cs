@@ -23,5 +23,6 @@ namespace Contracts
         void ITurnOff(int count); //worker se gasi
         [OperationContract]
         void ITurnOn(int count); //worker se pali 
+        
     }
 }
