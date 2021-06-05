@@ -12,11 +12,11 @@ namespace Contracts
     public interface IWorker
     {
         [OperationContract]
-        void SendToBase(); //Slanje u bazu
-        [OperationContract]
+        //void SendToBase(); //Slanje u bazu
+        //[OperationContract]
         void Repack(ListDescription ld); //prpekaivanje za svoju strukturu za rad
         [OperationContract]
-        bool CheckDeadband(double Val);
+        bool CheckDeadband(int dataset, object o);
         [OperationContract]
         void RecieveItem(ListDescription ld);
         [OperationContract]

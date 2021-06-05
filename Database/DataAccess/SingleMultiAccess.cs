@@ -38,5 +38,15 @@ namespace Database.DataAccess
             }
         }
 
+        public Dataset_SingleMulti GetLastSingle()
+        {
+            return GetAll().Where(a => a.Code1 == 5).Last();
+        }
+
+        public Dataset_SingleMulti GetLastMulti()
+        {
+            return GetAll().Where(a => a.Code1 == 6).Last();
+        }
+
     }
 }

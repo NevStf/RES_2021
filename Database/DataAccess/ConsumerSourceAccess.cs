@@ -37,5 +37,16 @@ namespace Database.DataAccess
 
             }
         }
+
+        public Dataset_ConsumerSource GetLastConsumer() 
+        {
+            return GetAll().Where(a => a.Code1 == 7).Last();
+        }
+
+        public Dataset_ConsumerSource GetLastSource()
+        {
+            return GetAll().Where(a => a.Code1 == 8).Last();
+        }
+
     }
 }

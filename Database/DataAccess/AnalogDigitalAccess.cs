@@ -37,5 +37,13 @@ namespace Database.DataAccess
 
             }
         }
+
+        public Dataset_AnalogDigital GetLastAnalog()
+        {
+
+            return GetAll().Where(a => a.Code1 == 1).Last();
+
+        }
+
     }
 }

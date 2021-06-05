@@ -37,5 +37,16 @@ namespace Database.DataAccess
 
             }
         }
+
+        public Dataset_CustomLimit GetLastCustom() 
+        {
+            return GetAll().Where(a => a.Code1 == 3).Last();
+        }
+
+        public Dataset_CustomLimit GetLastLimit()
+        {
+            return GetAll().Where(a => a.Code1 == 4).Last();
+        }
+
     }
 }

@@ -71,7 +71,7 @@ namespace Worker
                 {
                     SendToBaseFirstTime(IDWorker, cd);
                 }
-                else if(cd.DataSet == 4 && dataset4Access.GetAll().Count == 0) 
+                else if (cd.DataSet == 4 && dataset4Access.GetAll().Count == 0)
                 {
                     SendToBaseFirstTime(IDWorker, cd);
                 }
@@ -87,21 +87,21 @@ namespace Worker
                 dataset1Access.Insert(DA1);
                 dataset1Access.Insert(DA2);
             }
-            if (cd.DataSet == 2)
+            else if (cd.DataSet == 2)
             {
                 Dataset_CustomLimit DA1 = new Dataset_CustomLimit { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_CustomLimit DA2 = new Dataset_CustomLimit { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
                 dataset2Access.Insert(DA1);
                 dataset2Access.Insert(DA2);
             }
-            if (cd.DataSet == 3)
+            else if (cd.DataSet == 3)
             {
                 Dataset_SingleMulti DA1 = new Dataset_SingleMulti { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_SingleMulti DA2 = new Dataset_SingleMulti { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
                 dataset3Access.Insert(DA1);
                 dataset3Access.Insert(DA2);
             }
-            if (cd.DataSet == 4)
+            else if (cd.DataSet == 4)
             {
                 Dataset_ConsumerSource DA1 = new Dataset_ConsumerSource { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_ConsumerSource DA2 = new Dataset_ConsumerSource { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
@@ -110,11 +110,129 @@ namespace Worker
             }
         }
 
-        public bool CheckDeadband(double Val)
+        public bool CheckDeadband(int dataset, object workerProperty)
         {
-            throw new NotImplementedException();
+            WorkerProperty wp = workerProperty as WorkerProperty;
+
+            if (wp.Code == Codes.CODE_DIGITAL)
+            {
+                Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                return true;
+            }
+            if (wp.Code == Codes.CODE_ANALOG)
+            {
+                Dataset_AnalogDigital da = dataset1Access.GetLastAnalog();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            if (wp.Code == Codes.CODE_CUSTOM)
+            {
+                Dataset_CustomLimit da = dataset2Access.GetLastCustom();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            if (wp.Code == Codes.CODE_LIMITSET)
+            {
+                Dataset_CustomLimit da = dataset2Access.GetLastLimit();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            if (wp.Code == Codes.CODE_MULTIPLENODE)
+            {
+                Dataset_SingleMulti da = dataset3Access.GetLastMulti();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            if (wp.Code == Codes.CODE_SINGLEONE)
+            {
+                Dataset_SingleMulti da = dataset3Access.GetLastSingle();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            if (wp.Code == Codes.CODE_CONSUMER)
+            {
+                Dataset_ConsumerSource da = dataset4Access.GetLastConsumer();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            if (wp.Code == Codes.CODE_SOURCE)
+            {
+                Dataset_ConsumerSource da = dataset4Access.GetLastSource();
+                if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
+                {
+                    Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    return true;
+                }
+            }
+            Console.WriteLine("NIJE Prosao deadband za " + wp.Code.ToString());
+            return false;
         }
 
+        public bool CheckDatabasePopulated(int dataset)
+        {
+            if (dataset == 1 && dataset1Access.GetAll().Count >= 2)
+            {
+                return true;
+            }
+            else if (dataset == 2 && dataset2Access.GetAll().Count >= 2)
+            {
+                return true;
+            }
+            else if (dataset == 3 && dataset3Access.GetAll().Count >= 2)
+            {
+                return true;
+            }
+            else if (dataset == 4 && dataset4Access.GetAll().Count >= 2)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public void SendToBase(int IDWorker, int dataset, WorkerProperty wp)
+        {
+            if (CheckDatabasePopulated(dataset) && CheckDeadband(dataset, wp))
+            {
+                if (dataset == 1)
+                {
+                    var DA = new Dataset_AnalogDigital { Code1 = (int)wp.Code, Value1 = wp.WorkerValue, IDWorker = IDWorker };
+                    dataset1Access.Insert(DA);
+                }
+                else if (dataset == 2)
+                {
+                    var CL = new Dataset_CustomLimit { Code1 = (int)wp.Code, Value1 = wp.WorkerValue, IDWorker = IDWorker };
+                    dataset2Access.Insert(CL);
+                }
+                else if (dataset == 3)
+                {
+                    var SM = new Dataset_SingleMulti { Code1 = (int)wp.Code, Value1 = wp.WorkerValue, IDWorker = IDWorker };
+                    dataset3Access.Insert(SM);
+                }
+                else
+                {
+                    var CS = new Dataset_ConsumerSource { Code1 = (int)wp.Code, Value1 = wp.WorkerValue, IDWorker = IDWorker };
+                    dataset4Access.Insert(CS);
+                }
+            }
+        }
         public void RecieveItem(ListDescription ld)
         {
             if (LCD1.Count == 0 && LCD2.Count == 0 && LCD3.Count == 0 && LCD4.Count == 0)
@@ -173,11 +291,11 @@ namespace Worker
                     }
 
                     Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
+                    SendToBase(ld.WorkerID, d.DataSet, new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
                 }
 
             }
         }
-
 
         public void ITurnOff(int count)
         {
@@ -212,9 +330,5 @@ namespace Worker
 
         }
 
-        public void SendToBase()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

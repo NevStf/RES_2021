@@ -28,8 +28,8 @@ namespace Writer
 
             while (true)
             {
-                Codes code = (Codes)rand.Next(1, 9);
-                //Codes code = (Codes)(rand.Next(1, 3));
+                //Codes code = (Codes)rand.Next(1, 9);
+                Codes code = (Codes)(rand.Next(1, 3));
                 double value = Math.Round((rand1.NextDouble() * 1000), 2);
                 channel.WriterToLB(code, value);
                 Thread.Sleep(2000);
@@ -88,7 +88,6 @@ namespace Writer
             } while (res > 0);
 
         }
-
 
         static void Main(string[] args)
         {

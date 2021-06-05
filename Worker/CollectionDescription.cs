@@ -21,14 +21,14 @@ namespace Worker
         [DataMember]
         public List<WorkerProperty> HistoricalCollection { get; set; }
 
-        
+
 
         public CollectionDescription(int id, int dataSet, List<WorkerProperty> historicalCollection)
         {
             ID = id;
             DataSet = dataSet;
             HistoricalCollection = historicalCollection;
-            
+
         }
 
         public CollectionDescription()
@@ -36,16 +36,21 @@ namespace Worker
             ID = -5;
             DataSet = -5;
             HistoricalCollection = new List<WorkerProperty>();
-            
+
         }
 
-        public void AddToHistorical(int dataSet, Codes code, double value) 
+        public void AddToHistorical(int dataSet, Codes code, double value)
         {
-            if (this.DataSet == dataSet) {
+            if (this.DataSet == dataSet)
+            {
                 WorkerProperty wp = new WorkerProperty(code, value);
-                if (this.HistoricalCollection.Count > 0 && this.HistoricalCollection[0].Code == code) 
+                if (this.HistoricalCollection.Count > 0 && this.HistoricalCollection[0].Code == code)
                 {
                     this.HistoricalCollection[0] = wp;
+                }
+                else if (this.HistoricalCollection.Count == 2 && this.HistoricalCollection[1].Code == code)
+                {
+                    this.HistoricalCollection[1] = wp;
                 }
                 else
                 {
@@ -58,5 +63,5 @@ namespace Worker
 
     }
 
-    
+
 }
