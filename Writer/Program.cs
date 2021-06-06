@@ -32,7 +32,7 @@ namespace Writer
                 Codes code = (Codes)(rand.Next(1, 3));
                 double value = Math.Round((rand1.NextDouble() * 1000), 2);
                 channel.WriterToLB(code, value);
-                Thread.Sleep(2000);
+                Thread.Sleep(4000);
             }
 
         }

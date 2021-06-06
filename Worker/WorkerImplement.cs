@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Worker
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class WorkerImplement : IWorker
+    public class WorkerImplement : IWorker, IReader
     {
         AnalogDigitalAccess dataset1Access = new AnalogDigitalAccess();
         CustomLimitAccess dataset2Access = new CustomLimitAccess();
@@ -23,35 +23,43 @@ namespace Worker
         List<CollectionDescription> LCD2 = new List<CollectionDescription>();
         List<CollectionDescription> LCD3 = new List<CollectionDescription>();
         List<CollectionDescription> LCD4 = new List<CollectionDescription>();
+        CollectionDescription History = new CollectionDescription();
+
         bool w1 = true, w2 = false, w3 = false, w4 = false;
+        bool firsttime = true;
 
         public void InitList()
         {
             //CD za prvog workera
-            LCD1.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
-            LCD1.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
-            LCD1.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
-            LCD1.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
+            LCD1.Add(new CollectionDescription(1, 1));
+            LCD1.Add(new CollectionDescription(2, 2));
+            LCD1.Add(new CollectionDescription(3, 3));
+            LCD1.Add(new CollectionDescription(4, 4));
 
             //za drugog
-            LCD2.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
-            LCD2.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
-            LCD2.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
-            LCD2.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
+            LCD2.Add(new CollectionDescription(1, 1));
+            LCD2.Add(new CollectionDescription(2, 2));
+            LCD2.Add(new CollectionDescription(3, 3));
+            LCD2.Add(new CollectionDescription(4, 4));
 
             //za treceg
-            LCD3.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
-            LCD3.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
-            LCD3.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
-            LCD3.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
+            LCD3.Add(new CollectionDescription(1, 1));
+            LCD3.Add(new CollectionDescription(2, 2));
+            LCD3.Add(new CollectionDescription(3, 3));
+            LCD3.Add(new CollectionDescription(4, 4));
 
             //za cetvrtog
-            LCD4.Add(new CollectionDescription(1, 1, new List<WorkerProperty>()));
-            LCD4.Add(new CollectionDescription(2, 2, new List<WorkerProperty>()));
-            LCD4.Add(new CollectionDescription(3, 3, new List<WorkerProperty>()));
-            LCD4.Add(new CollectionDescription(4, 4, new List<WorkerProperty>()));
+            LCD4.Add(new CollectionDescription(1, 1));
+            LCD4.Add(new CollectionDescription(2, 2));
+            LCD4.Add(new CollectionDescription(3, 3));
+            LCD4.Add(new CollectionDescription(4, 4));
 
-            //SendToBase();
+            if(dataset1Access.GetAll().Count != 0)
+            {
+                firsttime = false;
+            }
+
+
         }
 
         //provera da li je dataset popunjem prilikom prvog upisa u bazu 
@@ -62,6 +70,7 @@ namespace Worker
                 if (cd.DataSet == 1 && dataset1Access.GetAll().Count == 0)
                 {
                     SendToBaseFirstTime(IDWorker, cd);
+                    firsttime = false;
                 }
                 else if (cd.DataSet == 2 && dataset2Access.GetAll().Count == 0)
                 {
@@ -214,6 +223,7 @@ namespace Worker
                 if (dataset == 1)
                 {
                     var DA = new Dataset_AnalogDigital { Code1 = (int)wp.Code, Value1 = wp.WorkerValue, IDWorker = IDWorker };
+
                     dataset1Access.Insert(DA);
                 }
                 else if (dataset == 2)
@@ -269,10 +279,16 @@ namespace Worker
             {
                 if (d.Items.Count > 0)
                 {
+                    Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
+                    ValueHistory(new WorkerProperty(ld.WorkerID, d.Items[0].Code, d.Items[0].Value, DateTime.Now));
                     if (d.DataSet == 1)
                     {
                         cd[0].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
-                        CheckDataset(ld.WorkerID, cd[0]);
+                        if (firsttime) //uslov je zbog digital koda koji uvek prolazi deadband (ovaj uslov moze za svaki dataset zbog brzine i optimizacije da se ubaci) 
+                        {
+                            CheckDataset(ld.WorkerID, cd[0]);
+                            return;
+                        }
                     }
                     else if (d.DataSet == 2)
                     {
@@ -290,11 +306,15 @@ namespace Worker
                         CheckDataset(ld.WorkerID, cd[3]);
                     }
 
-                    Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
                     SendToBase(ld.WorkerID, d.DataSet, new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
                 }
 
             }
+        }
+
+        public void ValueHistory(WorkerProperty wp)
+        {
+            History.HistoricalCollection.Add(wp);
         }
 
         public void ITurnOff(int count)
@@ -330,5 +350,23 @@ namespace Worker
 
         }
 
+        public List<WorkerProperty> ReadFromWorker(int IDWorker, Codes code, DateTime start, DateTime end)
+        {
+            List<WorkerProperty> list = History.HistoricalCollection.Where(id => id.WorkerID == IDWorker && id.Code == code).ToList();
+            List<WorkerProperty> retVal = new List<WorkerProperty>();
+            foreach (WorkerProperty wp in list)
+            {
+                if (start < wp.TimeStamp && end > wp.TimeStamp)
+                {
+                    retVal.Add(wp);
+                    
+
+                }
+
+                
+            }
+
+            return retVal;
+        }
     }
 }

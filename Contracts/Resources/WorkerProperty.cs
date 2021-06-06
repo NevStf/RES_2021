@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Worker
+namespace Contracts.Resources
 {
     [DataContract]
     public class WorkerProperty
@@ -17,6 +17,10 @@ namespace Worker
 
         [DataMember]
         public double WorkerValue { get; set; }
+        [DataMember]
+        public DateTime TimeStamp { get; set; }
+        [DataMember]
+        public int WorkerID { get; set; }
 
         public WorkerProperty(Codes code, double workerValue)
         {
@@ -24,10 +28,16 @@ namespace Worker
             WorkerValue = workerValue;
         }
 
-        public WorkerProperty()
+        public WorkerProperty(int ID, Codes c, double v, DateTime dt)
         {
-            Code = 0;
-            WorkerValue = -1;
+            WorkerID = ID;
+            Code = c;
+            WorkerValue = v;
+            TimeStamp = dt;
         }
+
+      
+
+
     }
 }

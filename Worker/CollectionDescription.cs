@@ -23,11 +23,11 @@ namespace Worker
 
 
 
-        public CollectionDescription(int id, int dataSet, List<WorkerProperty> historicalCollection)
+        public CollectionDescription(int id, int dataSet)
         {
             ID = id;
             DataSet = dataSet;
-            HistoricalCollection = historicalCollection;
+            HistoricalCollection = new List<WorkerProperty>();
 
         }
 
