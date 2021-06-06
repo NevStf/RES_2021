@@ -20,7 +20,6 @@ namespace Worker
                 host.AddServiceEndpoint(typeof(IWorker), binding, address);
                 host.AddServiceEndpoint(typeof(IReader), binding, address1);
 
-
                 host.Open();
                 Console.WriteLine("Worker pokrenut");
                 Console.ReadKey();

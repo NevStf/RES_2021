@@ -8,17 +8,9 @@ namespace Contracts.Resources
 {
     public class Description
     {
-
         public int ID { get; set; }
         public List<Item> Items { get; set; }
         public int DataSet { get; set; }
-
-        public Description()
-        {
-            ID = 0;
-            Items = new List<Item>();
-            DataSet = 0;
-        }
 
         public Description(int id, int ds)
         {

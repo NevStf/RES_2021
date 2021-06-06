@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Worker
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)] //singleton, reference: https://www.codeproject.com/Articles/86007/3-ways-to-do-WCF-instance-management-Per-call-Per
     public class WorkerImplement : IWorker, IReader
     {
         AnalogDigitalAccess dataset1Access = new AnalogDigitalAccess();
@@ -19,16 +19,17 @@ namespace Worker
         SingleMultiAccess dataset3Access = new SingleMultiAccess();
         ConsumerSourceAccess dataset4Access = new ConsumerSourceAccess();
 
+        //Za svakog workera, njegova lista collectiona
         List<CollectionDescription> LCD1 = new List<CollectionDescription>();
         List<CollectionDescription> LCD2 = new List<CollectionDescription>();
         List<CollectionDescription> LCD3 = new List<CollectionDescription>();
         List<CollectionDescription> LCD4 = new List<CollectionDescription>();
-        CollectionDescription History = new CollectionDescription();
+        CollectionDescription History = new CollectionDescription(); 
 
         bool w1 = true, w2 = false, w3 = false, w4 = false;
-        bool firsttime = true;
+        bool firsttime = true; //da ne upisuje duplo digital code nakon prvog upisa u situaciji ANALOG, DIGITAL
 
-        public void InitList()
+        public void InitList() //inicijalizuj mi listu samo jendom svaki put kada se ukljuci program
         {
             //CD za prvog workera
             LCD1.Add(new CollectionDescription(1, 1));
@@ -54,12 +55,11 @@ namespace Worker
             LCD4.Add(new CollectionDescription(3, 3));
             LCD4.Add(new CollectionDescription(4, 4));
 
+            //ako vec postoje elementi u bazi, stavi firsttime na false
             if(dataset1Access.GetAll().Count != 0)
             {
                 firsttime = false;
             }
-
-
         }
 
         //provera da li je dataset popunjem prilikom prvog upisa u bazu 
@@ -93,6 +93,7 @@ namespace Worker
             {
                 Dataset_AnalogDigital DA1 = new Dataset_AnalogDigital { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_AnalogDigital DA2 = new Dataset_AnalogDigital { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset1Access.Insert(DA1);
                 dataset1Access.Insert(DA2);
             }
@@ -100,6 +101,7 @@ namespace Worker
             {
                 Dataset_CustomLimit DA1 = new Dataset_CustomLimit { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_CustomLimit DA2 = new Dataset_CustomLimit { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset2Access.Insert(DA1);
                 dataset2Access.Insert(DA2);
             }
@@ -107,6 +109,7 @@ namespace Worker
             {
                 Dataset_SingleMulti DA1 = new Dataset_SingleMulti { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_SingleMulti DA2 = new Dataset_SingleMulti { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset3Access.Insert(DA1);
                 dataset3Access.Insert(DA2);
             }
@@ -114,11 +117,13 @@ namespace Worker
             {
                 Dataset_ConsumerSource DA1 = new Dataset_ConsumerSource { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
                 Dataset_ConsumerSource DA2 = new Dataset_ConsumerSource { Code1 = (int)cd.HistoricalCollection[1].Code, Value1 = cd.HistoricalCollection[1].WorkerValue, IDWorker = IDWorker };
+                //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset4Access.Insert(DA1);
                 dataset4Access.Insert(DA2);
             }
         }
 
+        //Proveri da li prolazi deadband
         public bool CheckDeadband(int dataset, object workerProperty)
         {
             WorkerProperty wp = workerProperty as WorkerProperty;
@@ -195,6 +200,7 @@ namespace Worker
             return false;
         }
 
+        //ukoliko u bazi postoji par, vrati true
         public bool CheckDatabasePopulated(int dataset)
         {
             if (dataset == 1 && dataset1Access.GetAll().Count >= 2)
@@ -216,6 +222,8 @@ namespace Worker
 
             return false;
         }
+
+        //WP ce biti poslat u bazu samo ukoliko u bazi postoji par vrednosti (D-A, C-L, S-M, C-S)
         public void SendToBase(int IDWorker, int dataset, WorkerProperty wp)
         {
             if (CheckDatabasePopulated(dataset) && CheckDeadband(dataset, wp))
@@ -243,6 +251,8 @@ namespace Worker
                 }
             }
         }
+
+        //Inicijalizuj liste i prepakuj u Worker strukturu za rad
         public void RecieveItem(ListDescription ld)
         {
             if (LCD1.Count == 0 && LCD2.Count == 0 && LCD3.Count == 0 && LCD4.Count == 0)
@@ -252,7 +262,7 @@ namespace Worker
             Repack(ld);
         }
 
-
+        //Prepakuj i daj workeru na citanje
         public void Repack(ListDescription ld)
         {
             if (ld.WorkerID == 1)
@@ -279,8 +289,8 @@ namespace Worker
             {
                 if (d.Items.Count > 0)
                 {
-                    Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value);
-                    ValueHistory(new WorkerProperty(ld.WorkerID, d.Items[0].Code, d.Items[0].Value, DateTime.Now));
+                    Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value); //for testing purposes only 
+                    ValueHistory(new WorkerProperty(ld.WorkerID, d.Items[0].Code, d.Items[0].Value, DateTime.Now)); //Ubaci u listu za readera
                     if (d.DataSet == 1)
                     {
                         cd[0].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
@@ -305,18 +315,35 @@ namespace Worker
                         cd[3].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
                         CheckDataset(ld.WorkerID, cd[3]);
                     }
-
+                    
                     SendToBase(ld.WorkerID, d.DataSet, new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
                 }
-
             }
         }
 
+        //Istorija svih vrednosti, bez obzira da li je upisano u bazu ili ne
         public void ValueHistory(WorkerProperty wp)
         {
             History.HistoricalCollection.Add(wp);
         }
 
+        //Reader cita iz workera
+        public List<WorkerProperty> ReadFromWorker(int IDWorker, Codes code, DateTime start, DateTime end)
+        {
+            List<WorkerProperty> list = History.HistoricalCollection.Where(id => id.WorkerID == IDWorker && id.Code == code).ToList(); //filtriranje liste pomocu lamda izraza
+            List<WorkerProperty> retVal = new List<WorkerProperty>(); //nova lista koju ce da primi reader
+            foreach (WorkerProperty wp in list)
+            {
+                if (start < wp.TimeStamp && end > wp.TimeStamp)
+                {
+                    retVal.Add(wp);
+                }
+            }
+
+            return retVal;
+        }
+
+        //Provera za iskljucene workere
         public void ITurnOff(int count)
         {
             if (count == 3)
@@ -333,6 +360,7 @@ namespace Worker
             }
         }
 
+        //Provera za ukljucene workere
         public void ITurnOn(int count)
         {
             if (count == 2)
@@ -347,26 +375,6 @@ namespace Worker
             {
                 w4 = true;
             }
-
-        }
-
-        public List<WorkerProperty> ReadFromWorker(int IDWorker, Codes code, DateTime start, DateTime end)
-        {
-            List<WorkerProperty> list = History.HistoricalCollection.Where(id => id.WorkerID == IDWorker && id.Code == code).ToList();
-            List<WorkerProperty> retVal = new List<WorkerProperty>();
-            foreach (WorkerProperty wp in list)
-            {
-                if (start < wp.TimeStamp && end > wp.TimeStamp)
-                {
-                    retVal.Add(wp);
-                    
-
-                }
-
-                
-            }
-
-            return retVal;
         }
     }
 }

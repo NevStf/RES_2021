@@ -12,11 +12,11 @@ namespace LoadBalancer
 
     public class LBImplement : ILoadBalancer, IWriter
     {
-
         List<Description> list = new List<Description>();
         public static int Brojac = 1; //brojac workera, u pocetku uvek imamo jednog!
         public static int DistributeCount = 0;
-        static bool w1 = true, w2 = false, w3 = false, w4 = false; //mora static jer ne radi ako nije staric
+        static bool w1 = true, w2 = false, w3 = false, w4 = false; //mora static jer ne radi ako nije static
+
         public void InitList() //inicijalizacija liste descriptiona
         {
             Description d1 = new Description(1, 1);
@@ -27,9 +27,9 @@ namespace LoadBalancer
             list.Add(d2);
             list.Add(d3);
             list.Add(d4);
-            //Console.WriteLine("asdasdasdasdasdasd");
         }
 
+        //Podeli posao round robin sistemom
         public void DistributeWork(ListDescription ld)
         {
             if (DistributeCount == 0)
@@ -40,7 +40,6 @@ namespace LoadBalancer
                 }
                 ld.WorkerID = 1;
                 SendToWorker(ld);
-
             }
             else if (DistributeCount == 1)
             {
@@ -54,7 +53,6 @@ namespace LoadBalancer
                 }
                 ld.WorkerID = 2;
                 SendToWorker(ld);
-
             }
             else if (DistributeCount == 2)
             {
@@ -75,8 +73,6 @@ namespace LoadBalancer
                 SendToWorker(ld);
                 DistributeCount = 0;
             }
-
-
         }
 
         public void WriterToLB(Codes code, double value)
@@ -91,12 +87,9 @@ namespace LoadBalancer
             ld.ListOfDescription.Add(d2);
             ld.ListOfDescription.Add(d3);
             ld.ListOfDescription.Add(d4);
-
-
-            Console.WriteLine("primio code: " + code + "\nPrimio value: " + value);
-            //list[0].Items.Add(new Item(code, value));
-            //Console.WriteLine(list[0].Items[0].Code);
             Item si = new Item(code, value);
+
+            Console.WriteLine("Primio code: " + code + "\nPrimio value: " + value);
 
             if (code == Codes.CODE_ANALOG || code == Codes.CODE_DIGITAL)
             {
@@ -157,7 +150,6 @@ namespace LoadBalancer
                 }
                 Console.WriteLine("Primio sam poruku i ugasio " + Brojac + ". workera");
             }
-
         }
 
         public void TurnOnWorker()
@@ -189,9 +181,6 @@ namespace LoadBalancer
 
                 Console.WriteLine("Primio sam poruku i ukljucio " + Brojac + ". workera.");
             }
-
         }
-
-
     }
 }

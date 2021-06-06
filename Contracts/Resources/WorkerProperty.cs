@@ -35,9 +35,5 @@ namespace Contracts.Resources
             WorkerValue = v;
             TimeStamp = dt;
         }
-
-      
-
-
     }
 }

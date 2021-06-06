@@ -21,8 +21,5 @@ namespace Contracts
         {
             Message = message;
         }
-
-        public CustomException() : this("") { }
-
     }
 }

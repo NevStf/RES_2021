@@ -11,7 +11,6 @@ namespace Worker
     [DataContract]
     public class CollectionDescription
     {
-
         [DataMember]
         public int ID { get; set; }
 
@@ -20,8 +19,6 @@ namespace Worker
 
         [DataMember]
         public List<WorkerProperty> HistoricalCollection { get; set; }
-
-
 
         public CollectionDescription(int id, int dataSet)
         {
@@ -58,10 +55,5 @@ namespace Worker
                 }
             }
         }
-
-
-
     }
-
-
 }
