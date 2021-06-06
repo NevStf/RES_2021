@@ -18,5 +18,14 @@ namespace Contracts.Resources
             Items = new List<Item>();
             DataSet = ds;
         }
+
+        //bez ovoga ne radi, jer .. ne znam.
+
+        public Description()
+        {
+            ID = -5;
+            DataSet = -5;
+            Items = new List<Item>();
+        }
     }
 }
