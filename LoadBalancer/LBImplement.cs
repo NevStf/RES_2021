@@ -101,7 +101,7 @@ namespace LoadBalancer
                 list[1].Items.Add(si);
                 ld.ListOfDescription[1].Items.Add(si);
             }
-            else if (code == Codes.CODE_SINGLEONE || code == Codes.CODE_MULTIPLENODE)
+            else if (code == Codes.CODE_SINGLEONE || code == Codes.CODE_MULTIPLEONE)
             {
                 list[2].Items.Add(si);
                 ld.ListOfDescription[2].Items.Add(si);

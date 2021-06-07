@@ -14,7 +14,7 @@ namespace Contracts.Resources
         CODE_CUSTOM,
         CODE_LIMITSET,
         CODE_SINGLEONE,
-        CODE_MULTIPLENODE,
+        CODE_MULTIPLEONE,
         CODE_CONSUMER,
         CODE_SOURCE
 

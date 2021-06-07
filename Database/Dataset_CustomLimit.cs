@@ -21,13 +21,5 @@ namespace Database
         [Timestamp]
         public byte[] Timestamp { get; set; }
 
-        //[Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //public DateTime Date { get; set; }
-
-
-
-
-
-
     }
 }

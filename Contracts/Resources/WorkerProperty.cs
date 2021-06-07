@@ -26,6 +26,9 @@ namespace Contracts.Resources
         {
             Code = code;
             WorkerValue = workerValue;
+            TimeStamp = new DateTime(0001, 01, 01, 00, 00, 00);
+            WorkerID = 1;
+
         }
 
         public WorkerProperty(int ID, Codes c, double v, DateTime dt)

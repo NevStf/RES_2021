@@ -11,11 +11,8 @@ namespace Contracts
     [DataContract]
     public class CustomException
     {
-
-        string message;
-     
         [DataMember]
-        public string Message { get => message; set => message = value; }
+        public string Message { get; set; }
 
         public CustomException(string message)
         {

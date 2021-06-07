@@ -160,7 +160,7 @@ namespace Worker
                     return true;
                 }
             }
-            if (wp.Code == Codes.CODE_MULTIPLENODE)
+            if (wp.Code == Codes.CODE_MULTIPLEONE)
             {
                 Dataset_SingleMulti da = dataset3Access.GetLastMulti();
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
