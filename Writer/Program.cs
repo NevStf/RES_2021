@@ -62,7 +62,7 @@ namespace Writer
                     }
                     catch (FaultException<CustomException> e)
                     {
-                        Console.WriteLine(e.Detail.Message);
+                        Console.WriteLine(e.Detail.CMessage);
                     }
                     catch (Exception e)
                     {
@@ -77,7 +77,7 @@ namespace Writer
                     }
                     catch (FaultException<CustomException> e)
                     {
-                        Console.WriteLine(e.Detail.Message);
+                        Console.WriteLine(e.Detail.CMessage);
                     }
                     catch (Exception e)
                     {

@@ -17,7 +17,7 @@ namespace ContractsTest
         public void ExceptionKonstruktor (string s)
         {
             CustomException ce = new CustomException(s);
-            Assert.AreEqual(ce.Message, s);
+            Assert.AreEqual(ce.CMessage, s);
         }
     }
 }

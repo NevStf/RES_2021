@@ -12,11 +12,11 @@ namespace Contracts
     public class CustomException
     {
         [DataMember]
-        public string Message { get; set; }
+        public string CMessage { get; set; }
 
         public CustomException(string message)
         {
-            Message = message;
+            CMessage = message;
         }
     }
 }
