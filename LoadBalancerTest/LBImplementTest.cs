@@ -7,6 +7,7 @@ using System;
 using System.ServiceModel;
 using Worker;
 
+
 namespace LoadBalancerTest
 {
     [TestFixture]
@@ -83,6 +84,46 @@ namespace LoadBalancerTest
                 Assert.DoesNotThrow(() => lb.TurnOffWorker());
                 Assert.DoesNotThrow(() => lb.TurnOffWorker());
                 Assert.AreEqual(1, LBImplement.Brojac);
+                host.Close();
+            }
+        }
+
+        [Ignore("Baza")]
+        public void DistributeWorkTest()
+        {
+            ListDescription ld = new ListDescription();
+            LBImplement.DistributeCount = 0;
+            LBImplement.Brojac = 1;
+
+            LBImplement lb = new LBImplement();
+
+            using (ServiceHost host = new ServiceHost(typeof(WorkerImplement)))
+            {
+                string address = "net.tcp://localhost:5000/IWorker";
+                NetTcpBinding binding = new NetTcpBinding();
+                host.AddServiceEndpoint(typeof(IWorker), binding, address);
+                host.Open();
+                lb.DistributeWork(ld);
+                Assert.AreEqual(1, LBImplement.DistributeCount);
+                Assert.AreEqual(1, ld.WorkerID);
+                host.Close();
+            }
+        }
+
+        [Ignore("Lancani poziv do baze")]
+        public void SendToWorkerTest()
+        {
+            ListDescription ld = new ListDescription();
+            LBImplement lb = new LBImplement();
+
+            using (ServiceHost host = new ServiceHost(typeof(WorkerImplement)))
+            {
+                string address = "net.tcp://localhost:5000/IWorker";
+                NetTcpBinding binding = new NetTcpBinding();
+                host.AddServiceEndpoint(typeof(IWorker), binding, address);
+                host.Open();
+                lb.SendToWorker(ld);
+                
                 host.Close();
             }
         }

@@ -28,14 +28,6 @@ namespace Worker
 
         }
 
-        public CollectionDescription()
-        {
-            ID = -5;
-            DataSet = -5;
-            HistoricalCollection = new List<WorkerProperty>();
-
-        }
-
         public void AddToHistorical(int dataSet, Codes code, double value)
         {
             if (this.DataSet == dataSet)

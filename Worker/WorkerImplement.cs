@@ -24,11 +24,11 @@ namespace Worker
         List<CollectionDescription> LCD2 = new List<CollectionDescription>();
         List<CollectionDescription> LCD3 = new List<CollectionDescription>();
         List<CollectionDescription> LCD4 = new List<CollectionDescription>();
-        CollectionDescription History = new CollectionDescription(); 
+        CollectionDescription History = new CollectionDescription(0,0); 
 
         bool w1 = true, w2 = false, w3 = false, w4 = false;
         bool firsttime = true; //da ne upisuje duplo digital code nakon prvog upisa u situaciji ANALOG, DIGITAL
-
+        
         public void InitList() //inicijalizuj mi listu samo jendom svaki put kada se ukljuci program
         {
             //CD za prvog workera

@@ -43,7 +43,7 @@ namespace LoadBalancer
                     DistributeCount++;
                 }
                 ld.WorkerID = 1;
-                SendToWorker(ld);
+                
             }
             else if (DistributeCount == 1)
             {
@@ -57,7 +57,7 @@ namespace LoadBalancer
                     DistributeCount = 0;
                 }
                 ld.WorkerID = 2;
-                SendToWorker(ld);
+                
             }
             else if (DistributeCount == 2)
             {
@@ -70,14 +70,14 @@ namespace LoadBalancer
                     DistributeCount = 0;
                 }
                 ld.WorkerID = 3;
-                SendToWorker(ld);
+                
             }
             else
             {
                 ld.WorkerID = 4;
-                SendToWorker(ld);
                 DistributeCount = 0;
             }
+            SendToWorker(ld);
         }
 
         public ListDescription InitListDesc()
