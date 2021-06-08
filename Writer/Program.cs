@@ -2,6 +2,7 @@
 using Contracts.Resources;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Writer
 {
+    [ExcludeFromCodeCoverage]
     class Program
     {
         //reference za threadovanje: https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-5.0 

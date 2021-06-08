@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Database.DataAccess
 {
+    [ExcludeFromCodeCoverage]
     public class ConsumerSourceAccess
     {
         public bool Insert(Dataset_ConsumerSource DA)

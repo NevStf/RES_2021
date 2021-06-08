@@ -12,10 +12,14 @@ namespace LoadBalancer
 
     public class LBImplement : ILoadBalancer, IWriter
     {
-        List<Description> list = new List<Description>();
-        public static int Brojac = 1; //brojac workera, u pocetku uvek imamo jednog!
+        public List<Description> list = new List<Description>();
+        //public List<Description> List { get; set; }
+
+        public static int brojac = 1; //brojac workera, u pocetku uvek imamo jednog!
+        public static int Brojac { get { return brojac; } set { brojac = value; } }
         public static int DistributeCount = 0;
         static bool w1 = true, w2 = false, w3 = false, w4 = false; //mora static jer ne radi ako nije static
+        ConnectionWithWorker cww = new ConnectionWithWorker();
 
         public void InitList() //inicijalizacija liste descriptiona
         {
@@ -43,6 +47,7 @@ namespace LoadBalancer
             }
             else if (DistributeCount == 1)
             {
+                
                 if (Brojac >= 2 && w3 == true)
                 {
                     DistributeCount++;
@@ -75,7 +80,7 @@ namespace LoadBalancer
             }
         }
 
-        public void WriterToLB(Codes code, double value)
+        public ListDescription InitListDesc()
         {
             ListDescription ld = new ListDescription();
             ld.ListOfDescription = new List<Description>();
@@ -87,6 +92,14 @@ namespace LoadBalancer
             ld.ListOfDescription.Add(d2);
             ld.ListOfDescription.Add(d3);
             ld.ListOfDescription.Add(d4);
+
+            return ld;
+
+        }
+
+        public void WriterToLB(Codes code, double value)
+        {
+            ListDescription ld = InitListDesc();
             Item si = new Item(code, value);
 
             Console.WriteLine("Primio code: " + code + "\nPrimio value: " + value);
@@ -113,13 +126,11 @@ namespace LoadBalancer
             }
             DistributeWork(ld);
         }
+        
         public void SendToWorker(ListDescription ld)
         {
-            ChannelFactory<IWorker> proxy = new ChannelFactory<IWorker>(new NetTcpBinding(),
-           new EndpointAddress("net.tcp://localhost:5000/IWorker"));
-
-            IWorker worker = proxy.CreateChannel();
-            worker.RecieveItem(ld);
+            cww.Connect();
+            cww.Proxy.RecieveItem(ld);
         }
 
         public void TurnOffWorker()
@@ -131,11 +142,8 @@ namespace LoadBalancer
             else
             {
                 Brojac--;
-                ChannelFactory<IWorker> proxy = new ChannelFactory<IWorker>(new NetTcpBinding(),
-                new EndpointAddress("net.tcp://localhost:5000/IWorker"));
-
-                IWorker worker = proxy.CreateChannel();
-                worker.ITurnOff(Brojac);
+                cww.Connect();
+                cww.Proxy.ITurnOff(Brojac);
                 if (Brojac == 3)
                 {
                     w4 = false;
@@ -161,11 +169,8 @@ namespace LoadBalancer
             else
             {
                 Brojac++;
-                ChannelFactory<IWorker> proxy = new ChannelFactory<IWorker>(new NetTcpBinding(),
-                new EndpointAddress("net.tcp://localhost:5000/IWorker"));
-
-                IWorker worker = proxy.CreateChannel();
-                worker.ITurnOn(Brojac);
+                cww.Connect();
+                cww.Proxy.ITurnOn(Brojac);
                 if (Brojac == 2)
                 {
                     w2 = true;

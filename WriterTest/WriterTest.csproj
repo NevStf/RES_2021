@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE1674E5-46BF-4648-A66A-14BE08E6AA90}</ProjectGuid>
+    <ProjectGuid>{0423A8C8-521E-4E44-91F5-7DFB96BB06FD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ContractsTest</RootNamespace>
-    <AssemblyName>ContractsTest</AssemblyName>
+    <RootNamespace>WriterTest</RootNamespace>
+    <AssemblyName>WriterTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,20 +53,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomExceptionTest.cs" />
-    <Compile Include="DescriptionTest.cs" />
-    <Compile Include="ItemTest.cs" />
-    <Compile Include="ListCodeTest.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkerPropertyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Contracts.csproj">
-      <Project>{24fcf989-c7be-40e6-9a78-6764f706cb93}</Project>
-      <Name>Contracts</Name>
+    <ProjectReference Include="..\Writer\Writer.csproj">
+      <Project>{dd0e9b76-2bb4-4421-9d98-ccbc55c7ce54}</Project>
+      <Name>Writer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
