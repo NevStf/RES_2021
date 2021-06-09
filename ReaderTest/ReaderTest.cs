@@ -36,6 +36,7 @@ namespace ReaderTest
         public void InputTestThrowsExID()
         {
             ReaderClass r = new ReaderClass();
+
             var output = new StringWriter();
             Console.SetOut(output);
 
@@ -50,6 +51,7 @@ namespace ReaderTest
         {
             var output = new StringWriter();
             Console.SetOut(output);
+
             ReaderClass r = new ReaderClass();
             var input = new StringReader(@"1
                                            9");
@@ -103,6 +105,7 @@ namespace ReaderTest
                                            08-Jun-21 2:41:00 PM");
 
             Console.SetIn(input);
+
             Assert.DoesNotThrow(() => r.Input());
             Assert.AreEqual(r.ID.ToString(), "1");
             Assert.AreEqual(r.Code.ToString(), "3");
@@ -117,7 +120,6 @@ namespace ReaderTest
             ////var output1 = new StringWriter();
             ////Console.SetOut(output1);
 
-
             //var output2 = new StringWriter();
             //Console.SetOut(output2);
             //var startdt = new StringReader("08-Jun-21 2:31:00 PM");
@@ -127,16 +129,13 @@ namespace ReaderTest
             //Console.SetOut(output3);
             //var enddt = new StringReader("08-Jun-21 2:41:00 PM");
             //Console.SetIn(enddt);
-
-
-
         }
 
 
 
         [Test]
         [TestCase(2, Codes.CODE_DIGITAL, null, null)]
-        public void ReaderPropertyTest(int id, int c, DateTime dt1, DateTime dt2)
+        public void ReaderKonstruktorTest(int id, int c, DateTime dt1, DateTime dt2)
         {
             dt1 = new DateTime(2021, 06, 08, 15, 01, 00);
             dt2 = new DateTime(2021, 06, 08, 16, 01, 00);

@@ -89,6 +89,58 @@ namespace LoadBalancerTest
             }
         }
 
+        [Test]
+        [TestCase(Codes.CODE_ANALOG, 456.7)]
+        [TestCase(Codes.CODE_DIGITAL, 46.7)]
+        public void PutItemToListDescriptionDataset1(Codes code, double value) 
+        {
+            LBImplement lb = new LBImplement();
+            lb.InitList();
+            Item i = new Item(code, value);
+            ListDescription ld = lb.PutItemToListDescription(code, value);
+
+            Assert.AreEqual(ld.ListOfDescription[0].Items.Count, 1);
+        }
+
+        [Test]
+        [TestCase(Codes.CODE_CUSTOM, 456.7)]
+        [TestCase(Codes.CODE_LIMITSET, 46.7)]
+        public void PutItemToListDescriptionDataset2(Codes code, double value)
+        {
+            LBImplement lb = new LBImplement();
+            lb.InitList();
+            Item i = new Item(code, value);
+            ListDescription ld = lb.PutItemToListDescription(code, value);
+
+            Assert.AreEqual(ld.ListOfDescription[1].Items.Count, 1);
+        }
+
+        [Test]
+        [TestCase(Codes.CODE_SINGLEONE, 456.7)]
+        [TestCase(Codes.CODE_MULTIPLEONE, 46.7)]
+        public void PutItemToListDescriptionDataset3(Codes code, double value)
+        {
+            LBImplement lb = new LBImplement();
+            lb.InitList();
+            Item i = new Item(code, value);
+            ListDescription ld = lb.PutItemToListDescription(code, value);
+
+            Assert.AreEqual(ld.ListOfDescription[2].Items.Count, 1);
+        }
+        [Test]
+        [TestCase(Codes.CODE_CONSUMER, 456.7)]
+        [TestCase(Codes.CODE_SOURCE, 46.7)]
+        public void PutItemToListDescriptionDataset4(Codes code, double value)
+        {
+            LBImplement lb = new LBImplement();
+            lb.InitList();
+            Item i = new Item(code, value);
+            ListDescription ld = lb.PutItemToListDescription(code, value);
+
+            Assert.AreEqual(ld.ListOfDescription[3].Items.Count, 1);
+        }
+
+
         [Ignore("Baza")]
         [ExcludeFromCodeCoverage]
         public void DistributeWorkTest()

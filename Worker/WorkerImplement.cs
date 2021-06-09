@@ -96,6 +96,8 @@ namespace Worker
                 //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset1Access.Insert(DA1);
                 dataset1Access.Insert(DA2);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA1.Code1.ToString() + " i " + DA1.Value1);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA2.Code1.ToString() + " i " + DA2.Value1);
             }
             else if (cd.DataSet == 2)
             {
@@ -104,6 +106,8 @@ namespace Worker
                 //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset2Access.Insert(DA1);
                 dataset2Access.Insert(DA2);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA1.Code1.ToString() + " i " + DA1.Value1);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA2.Code1.ToString() + " i " + DA2.Value1);
             }
             else if (cd.DataSet == 3)
             {
@@ -112,6 +116,8 @@ namespace Worker
                 //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset3Access.Insert(DA1);
                 dataset3Access.Insert(DA2);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA1.Code1.ToString() + " i " + DA1.Value1);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA2.Code1.ToString() + " i " + DA2.Value1);
             }
             else if (cd.DataSet == 4)
             {
@@ -120,6 +126,8 @@ namespace Worker
                 //Insertuj u tabelu kojoj odgovaraju kodovi
                 dataset4Access.Insert(DA1);
                 dataset4Access.Insert(DA2);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA1.Code1.ToString() + " i " + DA1.Value1);
+                Console.WriteLine("Worker sa IDjem " + IDWorker + " je upisao " + DA2.Code1.ToString() + " i " + DA2.Value1);
             }
         }
 

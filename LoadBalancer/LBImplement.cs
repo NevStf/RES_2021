@@ -101,13 +101,11 @@ namespace LoadBalancer
 
         }
 
-        [ExcludeFromCodeCoverage]
-        public void WriterToLB(Codes code, double value)
+        public ListDescription PutItemToListDescription(Codes code, double value) 
         {
             ListDescription ld = InitListDesc();
-            Item si = new Item(code, value);
 
-            Console.WriteLine("Primio code: " + code + "\nPrimio value: " + value);
+            Item si = new Item(code, value);
 
             if (code == Codes.CODE_ANALOG || code == Codes.CODE_DIGITAL)
             {
@@ -129,6 +127,16 @@ namespace LoadBalancer
                 list[3].Items.Add(si);
                 ld.ListOfDescription[3].Items.Add(si);
             }
+            return ld;
+        }
+
+        [ExcludeFromCodeCoverage]
+        public void WriterToLB(Codes code, double value)
+        {
+            ListDescription ld = PutItemToListDescription(code, value);
+
+            Console.WriteLine("Primio code: " + code + "\nPrimio value: " + value);
+
             logger.WriteToFile(String.Format("{0} LB primio {1} sa {2}", DateTime.Now.ToString(), code.ToString(), value));
             DistributeWork(ld);
         }

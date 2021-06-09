@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Contracts.Logger;
+using Database;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
