@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using Contracts.Resources;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Reader
 
     public class ReaderClass
     {
+        Logger logger = new Logger();
         public int ID { get; set; }
         public int Code { get; set; }
         public DateTime StartDT { get; set; }
@@ -30,12 +32,12 @@ namespace Reader
                 foreach (WorkerProperty wp in l)
                 {
                     Console.WriteLine(wp.WorkerID + " " + wp.Code.ToString() + " " + wp.WorkerValue + " " + wp.TimeStamp);
-
                 }
             }
+            logger.WriteToFile(string.Format("{0} Reader primio odgovor od workera sa {1} vrednosti", DateTime.Now.ToString(), l.Count));
         }
 
-      
+
         public void Input()
         {
             Console.WriteLine("Unesite ID workera [1 - 4]: ");
@@ -51,7 +53,7 @@ namespace Reader
             {
                 throw new FaultException<CustomException>(new CustomException("Pogresan unos, pokusajte ponovo."));
             }
-            
+
             Console.WriteLine("Unesite pocetno vreme [primer: 06-Jun-21 5:31:00 PM]: ");
             try
             {
@@ -70,6 +72,8 @@ namespace Reader
             {
                 throw new FaultException<CustomException>(new CustomException("Pogresan unos, pokusajte ponovo."));
             }
+            logger.WriteToFile(string.Format("{0} Reader poslao zahtev workeru {1} za citanje {2} u periodu {3}-{4}",
+                DateTime.Now.ToString(), ID, Code, StartDT.ToString(), EndDT.ToString()));
         }
 
         public ReaderClass(int id, int code, DateTime dt1, DateTime dt2)

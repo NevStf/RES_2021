@@ -1,9 +1,11 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using Contracts.Resources;
 using Database;
 using Database.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -14,21 +16,22 @@ namespace Worker
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)] //singleton, reference: https://www.codeproject.com/Articles/86007/3-ways-to-do-WCF-instance-management-Per-call-Per
     public class WorkerImplement : IWorker, IReader
     {
+        Logger logger = new Logger();
         AnalogDigitalAccess dataset1Access = new AnalogDigitalAccess();
         CustomLimitAccess dataset2Access = new CustomLimitAccess();
         SingleMultiAccess dataset3Access = new SingleMultiAccess();
         ConsumerSourceAccess dataset4Access = new ConsumerSourceAccess();
 
         //Za svakog workera, njegova lista collectiona
-        List<CollectionDescription> LCD1 = new List<CollectionDescription>();
-        List<CollectionDescription> LCD2 = new List<CollectionDescription>();
-        List<CollectionDescription> LCD3 = new List<CollectionDescription>();
-        List<CollectionDescription> LCD4 = new List<CollectionDescription>();
-        CollectionDescription History = new CollectionDescription(0,0); 
+        public List<CollectionDescription> LCD1 = new List<CollectionDescription>();
+        public List<CollectionDescription> LCD2 = new List<CollectionDescription>();
+        public List<CollectionDescription> LCD3 = new List<CollectionDescription>();
+        public List<CollectionDescription> LCD4 = new List<CollectionDescription>();
+        public CollectionDescription History = new CollectionDescription(0, 0);
 
         bool w1 = true, w2 = false, w3 = false, w4 = false;
         bool firsttime = true; //da ne upisuje duplo digital code nakon prvog upisa u situaciji ANALOG, DIGITAL
-        
+
         public void InitList() //inicijalizuj mi listu samo jendom svaki put kada se ukljuci program
         {
             //CD za prvog workera
@@ -54,14 +57,9 @@ namespace Worker
             LCD4.Add(new CollectionDescription(2, 2));
             LCD4.Add(new CollectionDescription(3, 3));
             LCD4.Add(new CollectionDescription(4, 4));
-
-            //ako vec postoje elementi u bazi, stavi firsttime na false
-            if(dataset1Access.GetAll().Count != 0)
-            {
-                firsttime = false;
-            }
         }
 
+        [ExcludeFromCodeCoverage]
         //provera da li je dataset popunjem prilikom prvog upisa u bazu 
         public void CheckDataset(int IDWorker, CollectionDescription cd)
         {
@@ -87,8 +85,10 @@ namespace Worker
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public void SendToBaseFirstTime(int IDWorker, CollectionDescription cd)
         {
+            logger.WriteToFile(string.Format("{0} Upis u bazu {1} sa {2}", DateTime.Now.ToString(), cd.HistoricalCollection[0].Code.ToString(), cd.HistoricalCollection[0].WorkerValue));
             if (cd.DataSet == 1)
             {
                 Dataset_AnalogDigital DA1 = new Dataset_AnalogDigital { Code1 = (int)cd.HistoricalCollection[0].Code, Value1 = cd.HistoricalCollection[0].WorkerValue, IDWorker = IDWorker };
@@ -123,6 +123,7 @@ namespace Worker
             }
         }
 
+        [ExcludeFromCodeCoverage]
         //Proveri da li prolazi deadband
         public bool CheckDeadband(int dataset, object workerProperty)
         {
@@ -131,6 +132,7 @@ namespace Worker
             if (wp.Code == Codes.CODE_DIGITAL)
             {
                 Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                 return true;
             }
             if (wp.Code == Codes.CODE_ANALOG)
@@ -139,6 +141,7 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
@@ -148,6 +151,7 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
@@ -157,6 +161,7 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
@@ -166,6 +171,7 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
@@ -175,6 +181,7 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
@@ -184,6 +191,7 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
@@ -193,13 +201,16 @@ namespace Worker
                 if (wp.WorkerValue <= da.Value1 * 0.98 || wp.WorkerValue >= da.Value1 * 1.02)
                 {
                     Console.WriteLine("Prosao deadband za " + wp.Code.ToString());
+                    logger.WriteToFile(string.Format("{0} Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
                     return true;
                 }
             }
             Console.WriteLine("NIJE Prosao deadband za " + wp.Code.ToString());
+            logger.WriteToFile(string.Format("{0} NIJE Prosao deadband za {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
             return false;
         }
 
+        [ExcludeFromCodeCoverage]
         //ukoliko u bazi postoji par, vrati true
         public bool CheckDatabasePopulated(int dataset)
         {
@@ -223,6 +234,7 @@ namespace Worker
             return false;
         }
 
+        [ExcludeFromCodeCoverage]
         //WP ce biti poslat u bazu samo ukoliko u bazi postoji par vrednosti (D-A, C-L, S-M, C-S)
         public void SendToBase(int IDWorker, int dataset, WorkerProperty wp)
         {
@@ -249,9 +261,11 @@ namespace Worker
                     var CS = new Dataset_ConsumerSource { Code1 = (int)wp.Code, Value1 = wp.WorkerValue, IDWorker = IDWorker };
                     dataset4Access.Insert(CS);
                 }
+                logger.WriteToFile(string.Format("{0} Upis u bazu {1} sa {2}", DateTime.Now.ToString(), wp.Code.ToString(), wp.WorkerValue));
             }
         }
 
+        [ExcludeFromCodeCoverage]
         //Inicijalizuj liste i prepakuj u Worker strukturu za rad
         public void RecieveItem(ListDescription ld)
         {
@@ -259,9 +273,15 @@ namespace Worker
             {
                 InitList();
             }
+            //ako vec postoje elementi u bazi, stavi firsttime na false
+            if (dataset1Access.GetAll().Count != 0)
+            {
+                firsttime = false;
+            }
             Repack(ld);
         }
 
+        [ExcludeFromCodeCoverage]
         //Prepakuj i daj workeru na citanje
         public void Repack(ListDescription ld)
         {
@@ -283,6 +303,7 @@ namespace Worker
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public void GiveToWorker(ListDescription ld, List<CollectionDescription> cd)
         {
             foreach (Description d in ld.ListOfDescription)
@@ -290,6 +311,7 @@ namespace Worker
                 if (d.Items.Count > 0)
                 {
                     Console.WriteLine(ld.WorkerID + " Worker prima: " + d.Items[0].Code.ToString() + " i " + d.Items[0].Value); //for testing purposes only 
+                    logger.WriteToFile(string.Format("{0} Worker primio {1} sa {2}", DateTime.Now.ToString(), d.Items[0].Code, d.Items[0].Value));
                     ValueHistory(new WorkerProperty(ld.WorkerID, d.Items[0].Code, d.Items[0].Value, DateTime.Now)); //Ubaci u listu za readera
                     if (d.DataSet == 1)
                     {
@@ -315,7 +337,6 @@ namespace Worker
                         cd[3].AddToHistorical(d.DataSet, d.Items[0].Code, d.Items[0].Value);
                         CheckDataset(ld.WorkerID, cd[3]);
                     }
-                    
                     SendToBase(ld.WorkerID, d.DataSet, new WorkerProperty(d.Items[0].Code, d.Items[0].Value));
                 }
             }
@@ -330,6 +351,7 @@ namespace Worker
         //Reader cita iz workera
         public List<WorkerProperty> ReadFromWorker(int IDWorker, Codes code, DateTime start, DateTime end)
         {
+            logger.WriteToFile(string.Format("{0} Worker{1} primio zahtev od readera za {2} u periodu {3}-{4}", DateTime.Now.ToString(), IDWorker, code.ToString(), start.ToString(), end.ToString()));
             List<WorkerProperty> list = History.HistoricalCollection.Where(id => id.WorkerID == IDWorker && id.Code == code).ToList(); //filtriranje liste pomocu lamda izraza
             List<WorkerProperty> retVal = new List<WorkerProperty>(); //nova lista koju ce da primi reader
             foreach (WorkerProperty wp in list)
@@ -358,6 +380,7 @@ namespace Worker
             {
                 w2 = false;
             }
+            logger.WriteToFile(string.Format("{0} Ukljucen worker {1}", DateTime.Now.ToString(), count + 1));
         }
 
         //Provera za ukljucene workere
@@ -375,6 +398,7 @@ namespace Worker
             {
                 w4 = true;
             }
+            logger.WriteToFile(string.Format("{0} Ukljucen worker {1}", DateTime.Now.ToString(), count));
         }
     }
 }

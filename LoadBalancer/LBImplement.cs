@@ -1,7 +1,9 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using Contracts.Resources;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -12,6 +14,7 @@ namespace LoadBalancer
 
     public class LBImplement : ILoadBalancer, IWriter
     {
+        Logger logger = new Logger();
         public List<Description> list = new List<Description>();
         //public List<Description> List { get; set; }
 
@@ -33,6 +36,7 @@ namespace LoadBalancer
             list.Add(d4);
         }
 
+        [ExcludeFromCodeCoverage]
         //Podeli posao round robin sistemom
         public void DistributeWork(ListDescription ld)
         {
@@ -43,11 +47,11 @@ namespace LoadBalancer
                     DistributeCount++;
                 }
                 ld.WorkerID = 1;
-                
+
             }
             else if (DistributeCount == 1)
             {
-                
+
                 if (Brojac >= 2 && w3 == true)
                 {
                     DistributeCount++;
@@ -57,7 +61,7 @@ namespace LoadBalancer
                     DistributeCount = 0;
                 }
                 ld.WorkerID = 2;
-                
+
             }
             else if (DistributeCount == 2)
             {
@@ -70,7 +74,7 @@ namespace LoadBalancer
                     DistributeCount = 0;
                 }
                 ld.WorkerID = 3;
-                
+
             }
             else
             {
@@ -97,6 +101,7 @@ namespace LoadBalancer
 
         }
 
+        [ExcludeFromCodeCoverage]
         public void WriterToLB(Codes code, double value)
         {
             ListDescription ld = InitListDesc();
@@ -124,19 +129,24 @@ namespace LoadBalancer
                 list[3].Items.Add(si);
                 ld.ListOfDescription[3].Items.Add(si);
             }
+            logger.WriteToFile(String.Format("{0} LB primio {1} sa {2}", DateTime.Now.ToString(), code.ToString(), value));
             DistributeWork(ld);
         }
-        
+
+        [ExcludeFromCodeCoverage]
         public void SendToWorker(ListDescription ld)
         {
+            logger.WriteToFile(String.Format("{0} LB prosledio parametre workeru {1}", DateTime.Now.ToString(), ld.WorkerID));
             cww.Connect();
             cww.Proxy.RecieveItem(ld);
         }
 
         public void TurnOffWorker()
         {
+            logger.WriteToFile(String.Format("{0} LB primio zahtev za gasenje workera", DateTime.Now.ToString()));
             if (Brojac == 1)
             {
+                logger.WriteToFile(String.Format("{0} LB odbio zahtev za gasenje workera (samo jedan aktivan)", DateTime.Now.ToString()));
                 throw new FaultException<CustomException>(new CustomException("Samo je jedan worker ukljucen."));
             }
             else
@@ -157,13 +167,16 @@ namespace LoadBalancer
                     w2 = false;
                 }
                 Console.WriteLine("Primio sam poruku i ugasio " + Brojac + ". workera");
+                logger.WriteToFile(String.Format("{0} LB iskljucio workera", DateTime.Now.ToString()));
             }
         }
 
         public void TurnOnWorker()
         {
+            logger.WriteToFile(String.Format("{0} LB primio zahtev za ukljucenje workera", DateTime.Now.ToString()));
             if (Brojac == 4)
             {
+                logger.WriteToFile(String.Format("{0} LB odbio zahtev za ukljucenje workera (svi su aktivni)", DateTime.Now.ToString()));
                 throw new FaultException<CustomException>(new CustomException("Sva cetiri workera su ukljucena."));
             }
             else
@@ -185,6 +198,7 @@ namespace LoadBalancer
                 }
 
                 Console.WriteLine("Primio sam poruku i ukljucio " + Brojac + ". workera.");
+                logger.WriteToFile(String.Format("{0} LB ukljucio workera", DateTime.Now.ToString()));
             }
         }
     }

@@ -45,7 +45,7 @@ namespace ContractsTest
         {
             DateTime Datet = new DateTime(2021, 6, 7, 23, 20, 10);
             WorkerProperty wp4 = new WorkerProperty(ID, c, v, Datet);
-            
+
 
             Assert.AreEqual(wp4.WorkerID, ID);
             Assert.AreEqual(wp4.Code, c);

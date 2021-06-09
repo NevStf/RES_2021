@@ -1,0 +1,457 @@
+09-Jun-21 4:03:28 PM LB uspesno inicijalizovan i ceka poruke
+09-Jun-21 4:03:29 PM Worker uspesno pokrenut
+09-Jun-21 4:03:29 PM Writer uspesno inicijalizovan
+09-Jun-21 4:03:30 PM Writer poslao CODE_SINGLEONE sa 517.73
+09-Jun-21 4:03:30 PM LB primio CODE_SINGLEONE sa 517.73
+09-Jun-21 4:03:30 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:35 PM Writer poslao CODE_SINGLEONE sa 594.66
+09-Jun-21 4:03:35 PM LB primio CODE_SINGLEONE sa 594.66
+09-Jun-21 4:03:35 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:37 PM Writer poslao CODE_MULTIPLEONE sa 681.46
+09-Jun-21 4:03:37 PM LB primio CODE_MULTIPLEONE sa 681.46
+09-Jun-21 4:03:37 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:39 PM Writer poslao CODE_DIGITAL sa 231.54
+09-Jun-21 4:03:39 PM LB primio CODE_DIGITAL sa 231.54
+09-Jun-21 4:03:39 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:41 PM Writer poslao CODE_ANALOG sa 114.34
+09-Jun-21 4:03:41 PM LB primio CODE_ANALOG sa 114.34
+09-Jun-21 4:03:41 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:43 PM Writer poslao CODE_CONSUMER sa 795.61
+09-Jun-21 4:03:43 PM LB primio CODE_CONSUMER sa 795.61
+09-Jun-21 4:03:43 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:44 PM Could not connect to net.tcp://localhost:4000/IWriter. The connection attempt lasted for a time span of 00:00:04.2546302. TCP error code 10061: No connection could be made because the target machine actively refused it 127.0.0.1:4000. 
+09-Jun-21 4:03:45 PM Writer poslao CODE_SOURCE sa 987.9
+09-Jun-21 4:03:45 PM LB primio CODE_SOURCE sa 987.9
+09-Jun-21 4:03:45 PM LB prosledio parametre workeru 1
+09-Jun-21 4:03:47 PM Writer poslao CODE_SINGLEONE sa 534.32
+09-Jun-21 4:04:05 PM LB uspesno inicijalizovan i ceka poruke
+09-Jun-21 4:04:06 PM Worker uspesno pokrenut
+09-Jun-21 4:04:06 PM Writer uspesno inicijalizovan
+09-Jun-21 4:04:06 PM LB primio CODE_MULTIPLEONE sa 630.56
+09-Jun-21 4:04:06 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:08 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:04:10 PM LB ukljucio workera
+09-Jun-21 4:04:10 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:04:12 PM LB primio CODE_ANALOG sa 115.52
+09-Jun-21 4:04:12 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:14 PM LB primio CODE_MULTIPLEONE sa 664.74
+09-Jun-21 4:04:14 PM LB prosledio parametre workeru 2
+09-Jun-21 4:04:16 PM LB primio CODE_DIGITAL sa 154.5
+09-Jun-21 4:04:16 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:16 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:04:16 PM LB ukljucio workera
+09-Jun-21 4:04:16 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:04:18 PM LB primio CODE_LIMITSET sa 468.47
+09-Jun-21 4:04:18 PM LB prosledio parametre workeru 2
+09-Jun-21 4:04:19 PM LB primio zahtev za gasenje workera
+09-Jun-21 4:04:19 PM LB iskljucio workera
+09-Jun-21 4:04:19 PM Writer poslao zahtev za gasenje workera
+09-Jun-21 4:04:20 PM LB primio CODE_MULTIPLEONE sa 681.93
+09-Jun-21 4:04:20 PM LB prosledio parametre workeru 3
+09-Jun-21 4:04:22 PM LB primio CODE_SOURCE sa 932.94
+09-Jun-21 4:04:22 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:40 PM LB uspesno inicijalizovan i ceka poruke
+09-Jun-21 4:04:40 PM Worker uspesno pokrenut
+09-Jun-21 4:04:41 PM Writer uspesno inicijalizovan
+09-Jun-21 4:04:41 PM LB primio CODE_CONSUMER sa 868.75
+09-Jun-21 4:04:41 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:45 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:04:45 PM Writer poslao CODE_CONSUMER sa 868.75
+09-Jun-21 4:04:45 PM LB ukljucio workera
+09-Jun-21 4:04:45 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:04:47 PM LB primio CODE_SINGLEONE sa 555.05
+09-Jun-21 4:04:47 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:47 PM Writer poslao CODE_SINGLEONE sa 555.05
+09-Jun-21 4:04:48 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:04:48 PM LB ukljucio workera
+09-Jun-21 4:04:48 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:04:49 PM LB primio CODE_SINGLEONE sa 596.72
+09-Jun-21 4:04:49 PM LB prosledio parametre workeru 2
+09-Jun-21 4:04:49 PM Writer poslao CODE_SINGLEONE sa 596.72
+09-Jun-21 4:04:51 PM LB primio CODE_CUSTOM sa 260.55
+09-Jun-21 4:04:51 PM LB prosledio parametre workeru 3
+09-Jun-21 4:04:51 PM Writer poslao CODE_CUSTOM sa 260.55
+09-Jun-21 4:04:52 PM LB primio zahtev za gasenje workera
+09-Jun-21 4:04:52 PM LB iskljucio workera
+09-Jun-21 4:04:52 PM Writer poslao zahtev za gasenje workera
+09-Jun-21 4:04:53 PM LB primio CODE_LIMITSET sa 420.23
+09-Jun-21 4:04:53 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:53 PM Writer poslao CODE_LIMITSET sa 420.23
+09-Jun-21 4:04:55 PM LB primio CODE_LIMITSET sa 399.76
+09-Jun-21 4:04:55 PM LB prosledio parametre workeru 2
+09-Jun-21 4:04:55 PM Writer poslao CODE_LIMITSET sa 399.76
+09-Jun-21 4:04:55 PM LB primio zahtev za gasenje workera
+09-Jun-21 4:04:55 PM LB iskljucio workera
+09-Jun-21 4:04:55 PM Writer poslao zahtev za gasenje workera
+09-Jun-21 4:04:56 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:04:56 PM LB ukljucio workera
+09-Jun-21 4:04:56 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:04:57 PM LB primio CODE_MULTIPLEONE sa 673.64
+09-Jun-21 4:04:57 PM LB prosledio parametre workeru 1
+09-Jun-21 4:04:57 PM Writer poslao CODE_MULTIPLEONE sa 673.64
+09-Jun-21 4:04:59 PM LB primio CODE_DIGITAL sa 178.26
+09-Jun-21 4:04:59 PM LB prosledio parametre workeru 2
+09-Jun-21 4:04:59 PM Writer poslao CODE_DIGITAL sa 178.26
+09-Jun-21 4:05:01 PM LB primio zahtev za gasenje workera
+09-Jun-21 4:05:01 PM LB iskljucio workera
+09-Jun-21 4:05:01 PM Writer poslao zahtev za gasenje workera
+09-Jun-21 4:05:01 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:05:01 PM LB ukljucio workera
+09-Jun-21 4:05:01 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:05:01 PM LB primio CODE_MULTIPLEONE sa 636.87
+09-Jun-21 4:05:01 PM LB prosledio parametre workeru 1
+09-Jun-21 4:05:02 PM Writer poslao CODE_MULTIPLEONE sa 636.87
+09-Jun-21 4:05:02 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:05:02 PM LB ukljucio workera
+09-Jun-21 4:05:02 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:05:02 PM LB primio zahtev za gasenje workera
+09-Jun-21 4:05:02 PM LB iskljucio workera
+09-Jun-21 4:05:02 PM Writer poslao zahtev za gasenje workera
+09-Jun-21 4:05:03 PM LB primio zahtev za gasenje workera
+09-Jun-21 4:05:03 PM LB iskljucio workera
+09-Jun-21 4:05:03 PM Writer poslao zahtev za gasenje workera
+09-Jun-21 4:05:04 PM LB primio CODE_CONSUMER sa 826.05
+09-Jun-21 4:05:04 PM LB prosledio parametre workeru 2
+09-Jun-21 4:05:04 PM Writer poslao CODE_CONSUMER sa 826.05
+09-Jun-21 4:05:06 PM LB primio CODE_CUSTOM sa 304.84
+09-Jun-21 4:05:06 PM LB prosledio parametre workeru 1
+09-Jun-21 4:05:06 PM Writer poslao CODE_CUSTOM sa 304.84
+09-Jun-21 4:21:10 PM LB uspesno inicijalizovan i ceka poruke
+09-Jun-21 4:21:10 PM Worker uspesno pokrenut
+09-Jun-21 4:21:11 PM Writer uspesno inicijalizovan
+09-Jun-21 4:21:11 PM LB primio CODE_SOURCE sa 877.46
+09-Jun-21 4:21:11 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:18 PM Worker primio CODE_SOURCE sa 877.46
+09-Jun-21 4:21:18 PM Prosao deadband za CODE_SOURCE sa 877.46
+09-Jun-21 4:21:19 PM Upis u bazu CODE_SOURCE sa 877.46
+09-Jun-21 4:21:19 PM Writer poslao CODE_SOURCE sa 877.46
+09-Jun-21 4:21:21 PM LB primio CODE_LIMITSET sa 422.49
+09-Jun-21 4:21:21 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:21 PM Worker primio CODE_LIMITSET sa 422.49
+09-Jun-21 4:21:21 PM Prosao deadband za CODE_LIMITSET sa 422.49
+09-Jun-21 4:21:21 PM Upis u bazu CODE_LIMITSET sa 422.49
+09-Jun-21 4:21:21 PM Writer poslao CODE_LIMITSET sa 422.49
+09-Jun-21 4:21:23 PM LB primio CODE_CONSUMER sa 812.73
+09-Jun-21 4:21:23 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:23 PM Worker primio CODE_CONSUMER sa 812.73
+09-Jun-21 4:21:23 PM NIJE Prosao deadband za CODE_CONSUMER sa 812.73
+09-Jun-21 4:21:23 PM Writer poslao CODE_CONSUMER sa 812.73
+09-Jun-21 4:21:25 PM LB primio CODE_LIMITSET sa 432.91
+09-Jun-21 4:21:25 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:25 PM Worker primio CODE_LIMITSET sa 432.91
+09-Jun-21 4:21:25 PM Prosao deadband za CODE_LIMITSET sa 432.91
+09-Jun-21 4:21:25 PM Upis u bazu CODE_LIMITSET sa 432.91
+09-Jun-21 4:21:25 PM Writer poslao CODE_LIMITSET sa 432.91
+09-Jun-21 4:21:27 PM LB primio CODE_MULTIPLEONE sa 650.99
+09-Jun-21 4:21:27 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:27 PM Worker primio CODE_MULTIPLEONE sa 650.99
+09-Jun-21 4:21:27 PM Prosao deadband za CODE_MULTIPLEONE sa 650.99
+09-Jun-21 4:21:27 PM Upis u bazu CODE_MULTIPLEONE sa 650.99
+09-Jun-21 4:21:27 PM Writer poslao CODE_MULTIPLEONE sa 650.99
+09-Jun-21 4:21:28 PM Pogresan unos, pokusajte ponovo.
+09-Jun-21 4:21:29 PM LB primio CODE_CONSUMER sa 827.13
+09-Jun-21 4:21:29 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:29 PM Worker primio CODE_CONSUMER sa 827.13
+09-Jun-21 4:21:29 PM NIJE Prosao deadband za CODE_CONSUMER sa 827.13
+09-Jun-21 4:21:29 PM Writer poslao CODE_CONSUMER sa 827.13
+09-Jun-21 4:21:31 PM LB primio CODE_CONSUMER sa 848.75
+09-Jun-21 4:21:31 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:31 PM Worker primio CODE_CONSUMER sa 848.75
+09-Jun-21 4:21:31 PM Prosao deadband za CODE_CONSUMER sa 848.75
+09-Jun-21 4:21:31 PM Upis u bazu CODE_CONSUMER sa 848.75
+09-Jun-21 4:21:31 PM Writer poslao CODE_CONSUMER sa 848.75
+09-Jun-21 4:21:33 PM LB primio CODE_SOURCE sa 895.11
+09-Jun-21 4:21:33 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:33 PM Worker primio CODE_SOURCE sa 895.11
+09-Jun-21 4:21:33 PM Prosao deadband za CODE_SOURCE sa 895.11
+09-Jun-21 4:21:33 PM Upis u bazu CODE_SOURCE sa 895.11
+09-Jun-21 4:21:33 PM Writer poslao CODE_SOURCE sa 895.11
+09-Jun-21 4:21:35 PM LB primio CODE_ANALOG sa 55.79
+09-Jun-21 4:21:35 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:35 PM Worker primio CODE_ANALOG sa 55.79
+09-Jun-21 4:21:35 PM Prosao deadband za CODE_ANALOG sa 55.79
+09-Jun-21 4:21:35 PM Upis u bazu CODE_ANALOG sa 55.79
+09-Jun-21 4:21:35 PM Writer poslao CODE_ANALOG sa 55.79
+09-Jun-21 4:21:37 PM LB primio CODE_SINGLEONE sa 556.24
+09-Jun-21 4:21:37 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:37 PM Worker primio CODE_SINGLEONE sa 556.24
+09-Jun-21 4:21:37 PM Prosao deadband za CODE_SINGLEONE sa 556.24
+09-Jun-21 4:21:37 PM Upis u bazu CODE_SINGLEONE sa 556.24
+09-Jun-21 4:21:37 PM Writer poslao CODE_SINGLEONE sa 556.24
+09-Jun-21 4:21:39 PM LB primio CODE_SOURCE sa 971.2
+09-Jun-21 4:21:39 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:39 PM Worker primio CODE_SOURCE sa 971.2
+09-Jun-21 4:21:40 PM Prosao deadband za CODE_SOURCE sa 971.2
+09-Jun-21 4:21:40 PM Upis u bazu CODE_SOURCE sa 971.2
+09-Jun-21 4:21:40 PM Writer poslao CODE_SOURCE sa 971.2
+09-Jun-21 4:21:42 PM LB primio CODE_LIMITSET sa 446.47
+09-Jun-21 4:21:42 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:42 PM Worker primio CODE_LIMITSET sa 446.47
+09-Jun-21 4:21:42 PM Prosao deadband za CODE_LIMITSET sa 446.47
+09-Jun-21 4:21:42 PM Upis u bazu CODE_LIMITSET sa 446.47
+09-Jun-21 4:21:42 PM Writer poslao CODE_LIMITSET sa 446.47
+09-Jun-21 4:21:44 PM LB primio CODE_CUSTOM sa 257.71
+09-Jun-21 4:21:44 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:44 PM Worker primio CODE_CUSTOM sa 257.71
+09-Jun-21 4:21:44 PM Prosao deadband za CODE_CUSTOM sa 257.71
+09-Jun-21 4:21:44 PM Upis u bazu CODE_CUSTOM sa 257.71
+09-Jun-21 4:21:44 PM Writer poslao CODE_CUSTOM sa 257.71
+09-Jun-21 4:21:46 PM LB primio CODE_SOURCE sa 956.15
+09-Jun-21 4:21:46 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:46 PM Worker primio CODE_SOURCE sa 956.15
+09-Jun-21 4:21:46 PM NIJE Prosao deadband za CODE_SOURCE sa 956.15
+09-Jun-21 4:21:46 PM Writer poslao CODE_SOURCE sa 956.15
+09-Jun-21 4:21:48 PM LB primio CODE_MULTIPLEONE sa 679.88
+09-Jun-21 4:21:48 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:48 PM Worker primio CODE_MULTIPLEONE sa 679.88
+09-Jun-21 4:21:48 PM Prosao deadband za CODE_MULTIPLEONE sa 679.88
+09-Jun-21 4:21:48 PM Upis u bazu CODE_MULTIPLEONE sa 679.88
+09-Jun-21 4:21:48 PM Writer poslao CODE_MULTIPLEONE sa 679.88
+09-Jun-21 4:21:50 PM LB primio CODE_MULTIPLEONE sa 707.99
+09-Jun-21 4:21:50 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:50 PM Worker primio CODE_MULTIPLEONE sa 707.99
+09-Jun-21 4:21:50 PM Prosao deadband za CODE_MULTIPLEONE sa 707.99
+09-Jun-21 4:21:50 PM Upis u bazu CODE_MULTIPLEONE sa 707.99
+09-Jun-21 4:21:50 PM Writer poslao CODE_MULTIPLEONE sa 707.99
+09-Jun-21 4:21:52 PM LB primio CODE_MULTIPLEONE sa 625.34
+09-Jun-21 4:21:52 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:52 PM Worker primio CODE_MULTIPLEONE sa 625.34
+09-Jun-21 4:21:52 PM Prosao deadband za CODE_MULTIPLEONE sa 625.34
+09-Jun-21 4:21:52 PM Upis u bazu CODE_MULTIPLEONE sa 625.34
+09-Jun-21 4:21:52 PM Writer poslao CODE_MULTIPLEONE sa 625.34
+09-Jun-21 4:21:54 PM LB primio CODE_ANALOG sa 115.7
+09-Jun-21 4:21:54 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:54 PM Worker primio CODE_ANALOG sa 115.7
+09-Jun-21 4:21:54 PM Prosao deadband za CODE_ANALOG sa 115.7
+09-Jun-21 4:21:54 PM Upis u bazu CODE_ANALOG sa 115.7
+09-Jun-21 4:21:54 PM Writer poslao CODE_ANALOG sa 115.7
+09-Jun-21 4:21:56 PM LB primio CODE_CONSUMER sa 764.6
+09-Jun-21 4:21:56 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:56 PM Worker primio CODE_CONSUMER sa 764.6
+09-Jun-21 4:21:56 PM Prosao deadband za CODE_CONSUMER sa 764.6
+09-Jun-21 4:21:56 PM Upis u bazu CODE_CONSUMER sa 764.6
+09-Jun-21 4:21:56 PM Writer poslao CODE_CONSUMER sa 764.6
+09-Jun-21 4:21:58 PM LB primio CODE_SINGLEONE sa 519.22
+09-Jun-21 4:21:58 PM LB prosledio parametre workeru 1
+09-Jun-21 4:21:58 PM Worker primio CODE_SINGLEONE sa 519.22
+09-Jun-21 4:21:59 PM Prosao deadband za CODE_SINGLEONE sa 519.22
+09-Jun-21 4:21:59 PM Upis u bazu CODE_SINGLEONE sa 519.22
+09-Jun-21 4:21:59 PM Writer poslao CODE_SINGLEONE sa 519.22
+09-Jun-21 4:22:01 PM LB primio CODE_MULTIPLEONE sa 740.94
+09-Jun-21 4:22:01 PM LB prosledio parametre workeru 1
+09-Jun-21 4:22:01 PM Worker primio CODE_MULTIPLEONE sa 740.94
+09-Jun-21 4:22:01 PM Prosao deadband za CODE_MULTIPLEONE sa 740.94
+09-Jun-21 4:22:01 PM Upis u bazu CODE_MULTIPLEONE sa 740.94
+09-Jun-21 4:22:01 PM Writer poslao CODE_MULTIPLEONE sa 740.94
+09-Jun-21 4:22:03 PM LB primio CODE_SINGLEONE sa 611.68
+09-Jun-21 4:22:03 PM LB prosledio parametre workeru 1
+09-Jun-21 4:22:03 PM Worker primio CODE_SINGLEONE sa 611.68
+09-Jun-21 4:22:03 PM Prosao deadband za CODE_SINGLEONE sa 611.68
+09-Jun-21 4:22:03 PM Upis u bazu CODE_SINGLEONE sa 611.68
+09-Jun-21 4:22:03 PM Writer poslao CODE_SINGLEONE sa 611.68
+09-Jun-21 4:22:05 PM LB primio CODE_SOURCE sa 971.67
+09-Jun-21 4:22:05 PM LB prosledio parametre workeru 1
+09-Jun-21 4:22:05 PM Worker primio CODE_SOURCE sa 971.67
+09-Jun-21 4:22:05 PM NIJE Prosao deadband za CODE_SOURCE sa 971.67
+09-Jun-21 4:22:05 PM Writer poslao CODE_SOURCE sa 971.67
+09-Jun-21 4:22:45 PM LB uspesno inicijalizovan i ceka poruke
+09-Jun-21 4:22:46 PM Worker uspesno pokrenut
+09-Jun-21 4:22:46 PM Writer uspesno inicijalizovan
+09-Jun-21 4:22:47 PM LB primio CODE_SINGLEONE sa 533.13
+09-Jun-21 4:22:47 PM LB prosledio parametre workeru 1
+09-Jun-21 4:22:48 PM LB primio zahtev za ukljucenje workera
+09-Jun-21 4:22:50 PM Worker primio CODE_SINGLEONE sa 533.13
+09-Jun-21 4:22:50 PM Prosao deadband za CODE_SINGLEONE sa 533.13
+09-Jun-21 4:22:50 PM Upis u bazu CODE_SINGLEONE sa 533.13
+09-Jun-21 4:22:50 PM Ukljucen worker 2
+09-Jun-21 4:22:50 PM Writer poslao CODE_SINGLEONE sa 533.13
+09-Jun-21 4:22:50 PM LB ukljucio workera
+09-Jun-21 4:22:50 PM Writer poslao zahtev za paljenje workera
+09-Jun-21 4:22:52 PM LB primio CODE_CUSTOM sa 304.51
+09-Jun-21 4:22:52 PM LB prosledio parametre workeru 1
+09-Jun-21 4:22:52 PM Worker primio CODE_CUSTOM sa 304.51
+09-Jun-21 4:22:52 PM Prosao deadband za CODE_CUSTOM sa 304.51
+09-Jun-21 4:22:52 PM Upis u bazu CODE_CUSTOM sa 304.51
+09-Jun-21 4:22:52 PM Writer poslao CODE_CUSTOM sa 304.51
+09-Jun-21 4:22:54 PM LB primio CODE_DIGITAL sa 150.76
+09-Jun-21 4:22:54 PM LB prosledio parametre workeru 2
+09-Jun-21 4:22:54 PM Worker primio CODE_DIGITAL sa 150.76
+09-Jun-21 4:22:54 PM Prosao deadband za CODE_DIGITAL sa 150.76
+09-Jun-21 4:22:54 PM Upis u bazu CODE_DIGITAL sa 150.76
+09-Jun-21 4:22:54 PM Writer poslao CODE_DIGITAL sa 150.76
+09-Jun-21 4:22:56 PM LB primio CODE_CONSUMER sa 862.77
+09-Jun-21 4:22:56 PM LB prosledio parametre workeru 1
+09-Jun-21 4:22:56 PM Worker primio CODE_CONSUMER sa 862.77
+09-Jun-21 4:22:56 PM Prosao deadband za CODE_CONSUMER sa 862.77
+09-Jun-21 4:22:56 PM Upis u bazu CODE_CONSUMER sa 862.77
+09-Jun-21 4:22:56 PM Writer poslao CODE_CONSUMER sa 862.77
+09-Jun-21 4:22:58 PM LB primio CODE_SINGLEONE sa 580.38
+09-Jun-21 4:22:58 PM LB prosledio parametre workeru 2
+09-Jun-21 4:22:58 PM Worker primio CODE_SINGLEONE sa 580.38
+09-Jun-21 4:22:58 PM Prosao deadband za CODE_SINGLEONE sa 580.38
+09-Jun-21 4:22:58 PM Upis u bazu CODE_SINGLEONE sa 580.38
+09-Jun-21 4:22:58 PM Writer poslao CODE_SINGLEONE sa 580.38
+09-Jun-21 4:23:00 PM LB primio CODE_SOURCE sa 954.73
+09-Jun-21 4:23:00 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:00 PM Worker primio CODE_SOURCE sa 954.73
+09-Jun-21 4:23:00 PM NIJE Prosao deadband za CODE_SOURCE sa 954.73
+09-Jun-21 4:23:00 PM Writer poslao CODE_SOURCE sa 954.73
+09-Jun-21 4:23:02 PM LB primio CODE_CUSTOM sa 286.6
+09-Jun-21 4:23:02 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:02 PM Worker primio CODE_CUSTOM sa 286.6
+09-Jun-21 4:23:02 PM Prosao deadband za CODE_CUSTOM sa 286.6
+09-Jun-21 4:23:02 PM Upis u bazu CODE_CUSTOM sa 286.6
+09-Jun-21 4:23:02 PM Writer poslao CODE_CUSTOM sa 286.6
+09-Jun-21 4:23:04 PM LB primio CODE_CONSUMER sa 782
+09-Jun-21 4:23:04 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:04 PM Worker primio CODE_CONSUMER sa 782
+09-Jun-21 4:23:05 PM Prosao deadband za CODE_CONSUMER sa 782
+09-Jun-21 4:23:05 PM Upis u bazu CODE_CONSUMER sa 782
+09-Jun-21 4:23:05 PM Writer poslao CODE_CONSUMER sa 782
+09-Jun-21 4:23:07 PM LB primio CODE_LIMITSET sa 492.43
+09-Jun-21 4:23:07 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:07 PM Worker primio CODE_LIMITSET sa 492.43
+09-Jun-21 4:23:07 PM Prosao deadband za CODE_LIMITSET sa 492.43
+09-Jun-21 4:23:07 PM Upis u bazu CODE_LIMITSET sa 492.43
+09-Jun-21 4:23:07 PM Writer poslao CODE_LIMITSET sa 492.43
+09-Jun-21 4:23:07 PM Reader poslao zahtev workeru 1 za citanje 2 u periodu 06-Jun-21 5:31:00 PM-09-Jun-21 5:31:00 PM
+09-Jun-21 4:23:07 PM Worker1 primio zahtev od readera za CODE_DIGITAL u periodu 06-Jun-21 5:31:00 PM-09-Jun-21 5:31:00 PM
+09-Jun-21 4:23:07 PM Nema zapisanih vrednosti za unet vremenski interval.
+09-Jun-21 4:23:09 PM LB primio CODE_DIGITAL sa 147.93
+09-Jun-21 4:23:09 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:09 PM Worker primio CODE_DIGITAL sa 147.93
+09-Jun-21 4:23:09 PM Prosao deadband za CODE_DIGITAL sa 147.93
+09-Jun-21 4:23:09 PM Upis u bazu CODE_DIGITAL sa 147.93
+09-Jun-21 4:23:09 PM Writer poslao CODE_DIGITAL sa 147.93
+09-Jun-21 4:23:11 PM LB primio CODE_SOURCE sa 906.37
+09-Jun-21 4:23:11 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:11 PM Worker primio CODE_SOURCE sa 906.37
+09-Jun-21 4:23:11 PM Prosao deadband za CODE_SOURCE sa 906.37
+09-Jun-21 4:23:11 PM Upis u bazu CODE_SOURCE sa 906.37
+09-Jun-21 4:23:11 PM Writer poslao CODE_SOURCE sa 906.37
+09-Jun-21 4:23:13 PM LB primio CODE_LIMITSET sa 423.04
+09-Jun-21 4:23:13 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:13 PM Worker primio CODE_LIMITSET sa 423.04
+09-Jun-21 4:23:13 PM Prosao deadband za CODE_LIMITSET sa 423.04
+09-Jun-21 4:23:13 PM Upis u bazu CODE_LIMITSET sa 423.04
+09-Jun-21 4:23:13 PM Writer poslao CODE_LIMITSET sa 423.04
+09-Jun-21 4:23:15 PM LB primio CODE_LIMITSET sa 487.12
+09-Jun-21 4:23:15 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:15 PM Worker primio CODE_LIMITSET sa 487.12
+09-Jun-21 4:23:15 PM Prosao deadband za CODE_LIMITSET sa 487.12
+09-Jun-21 4:23:15 PM Upis u bazu CODE_LIMITSET sa 487.12
+09-Jun-21 4:23:15 PM Writer poslao CODE_LIMITSET sa 487.12
+09-Jun-21 4:23:17 PM LB primio CODE_MULTIPLEONE sa 626.81
+09-Jun-21 4:23:17 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:17 PM Worker primio CODE_MULTIPLEONE sa 626.81
+09-Jun-21 4:23:17 PM Prosao deadband za CODE_MULTIPLEONE sa 626.81
+09-Jun-21 4:23:17 PM Upis u bazu CODE_MULTIPLEONE sa 626.81
+09-Jun-21 4:23:17 PM Writer poslao CODE_MULTIPLEONE sa 626.81
+09-Jun-21 4:23:19 PM LB primio CODE_LIMITSET sa 409.31
+09-Jun-21 4:23:19 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:19 PM Worker primio CODE_LIMITSET sa 409.31
+09-Jun-21 4:23:19 PM Prosao deadband za CODE_LIMITSET sa 409.31
+09-Jun-21 4:23:19 PM Upis u bazu CODE_LIMITSET sa 409.31
+09-Jun-21 4:23:19 PM Writer poslao CODE_LIMITSET sa 409.31
+09-Jun-21 4:23:21 PM LB primio CODE_LIMITSET sa 480.51
+09-Jun-21 4:23:21 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:21 PM Worker primio CODE_LIMITSET sa 480.51
+09-Jun-21 4:23:21 PM Prosao deadband za CODE_LIMITSET sa 480.51
+09-Jun-21 4:23:21 PM Upis u bazu CODE_LIMITSET sa 480.51
+09-Jun-21 4:23:21 PM Writer poslao CODE_LIMITSET sa 480.51
+09-Jun-21 4:23:23 PM LB primio CODE_SOURCE sa 949
+09-Jun-21 4:23:23 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:23 PM Worker primio CODE_SOURCE sa 949
+09-Jun-21 4:23:23 PM Prosao deadband za CODE_SOURCE sa 949
+09-Jun-21 4:23:23 PM Upis u bazu CODE_SOURCE sa 949
+09-Jun-21 4:23:23 PM Writer poslao CODE_SOURCE sa 949
+09-Jun-21 4:23:25 PM LB primio CODE_MULTIPLEONE sa 691.82
+09-Jun-21 4:23:25 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:25 PM Worker primio CODE_MULTIPLEONE sa 691.82
+09-Jun-21 4:23:26 PM Prosao deadband za CODE_MULTIPLEONE sa 691.82
+09-Jun-21 4:23:26 PM Upis u bazu CODE_MULTIPLEONE sa 691.82
+09-Jun-21 4:23:26 PM Writer poslao CODE_MULTIPLEONE sa 691.82
+09-Jun-21 4:23:27 PM Reader poslao zahtev workeru 2 za citanje 2 u periodu 06-Jun-21 5:31:00 PM-09-Jun-21 5:31:00 PM
+09-Jun-21 4:23:27 PM Worker2 primio zahtev od readera za CODE_DIGITAL u periodu 06-Jun-21 5:31:00 PM-09-Jun-21 5:31:00 PM
+09-Jun-21 4:23:27 PM Reader primio odgovor od workera sa 1 vrednosti
+09-Jun-21 4:23:28 PM LB primio CODE_CUSTOM sa 339.81
+09-Jun-21 4:23:28 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:28 PM Worker primio CODE_CUSTOM sa 339.81
+09-Jun-21 4:23:28 PM Prosao deadband za CODE_CUSTOM sa 339.81
+09-Jun-21 4:23:28 PM Upis u bazu CODE_CUSTOM sa 339.81
+09-Jun-21 4:23:28 PM Writer poslao CODE_CUSTOM sa 339.81
+09-Jun-21 4:23:30 PM LB primio CODE_CONSUMER sa 781.07
+09-Jun-21 4:23:30 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:30 PM Worker primio CODE_CONSUMER sa 781.07
+09-Jun-21 4:23:30 PM NIJE Prosao deadband za CODE_CONSUMER sa 781.07
+09-Jun-21 4:23:30 PM Writer poslao CODE_CONSUMER sa 781.07
+09-Jun-21 4:23:32 PM LB primio CODE_ANALOG sa 78.17
+09-Jun-21 4:23:32 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:32 PM Worker primio CODE_ANALOG sa 78.17
+09-Jun-21 4:23:32 PM Prosao deadband za CODE_ANALOG sa 78.17
+09-Jun-21 4:23:32 PM Upis u bazu CODE_ANALOG sa 78.17
+09-Jun-21 4:23:32 PM Writer poslao CODE_ANALOG sa 78.17
+09-Jun-21 4:23:34 PM LB primio CODE_LIMITSET sa 461.68
+09-Jun-21 4:23:34 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:34 PM Worker primio CODE_LIMITSET sa 461.68
+09-Jun-21 4:23:34 PM Prosao deadband za CODE_LIMITSET sa 461.68
+09-Jun-21 4:23:34 PM Upis u bazu CODE_LIMITSET sa 461.68
+09-Jun-21 4:23:34 PM Writer poslao CODE_LIMITSET sa 461.68
+09-Jun-21 4:23:36 PM LB primio CODE_CUSTOM sa 265.27
+09-Jun-21 4:23:36 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:36 PM Worker primio CODE_CUSTOM sa 265.27
+09-Jun-21 4:23:36 PM Prosao deadband za CODE_CUSTOM sa 265.27
+09-Jun-21 4:23:36 PM Upis u bazu CODE_CUSTOM sa 265.27
+09-Jun-21 4:23:36 PM Writer poslao CODE_CUSTOM sa 265.27
+09-Jun-21 4:23:38 PM LB primio CODE_CUSTOM sa 297.71
+09-Jun-21 4:23:38 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:38 PM Worker primio CODE_CUSTOM sa 297.71
+09-Jun-21 4:23:38 PM Prosao deadband za CODE_CUSTOM sa 297.71
+09-Jun-21 4:23:38 PM Pogresan unos, pokusajte ponovo.
+09-Jun-21 4:23:38 PM Upis u bazu CODE_CUSTOM sa 297.71
+09-Jun-21 4:23:38 PM Writer poslao CODE_CUSTOM sa 297.71
+09-Jun-21 4:23:40 PM LB primio CODE_MULTIPLEONE sa 721.06
+09-Jun-21 4:23:40 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:40 PM Worker primio CODE_MULTIPLEONE sa 721.06
+09-Jun-21 4:23:40 PM Prosao deadband za CODE_MULTIPLEONE sa 721.06
+09-Jun-21 4:23:40 PM Upis u bazu CODE_MULTIPLEONE sa 721.06
+09-Jun-21 4:23:40 PM Writer poslao CODE_MULTIPLEONE sa 721.06
+09-Jun-21 4:23:42 PM LB primio CODE_ANALOG sa 20.64
+09-Jun-21 4:23:42 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:42 PM Worker primio CODE_ANALOG sa 20.64
+09-Jun-21 4:23:42 PM Prosao deadband za CODE_ANALOG sa 20.64
+09-Jun-21 4:23:42 PM Upis u bazu CODE_ANALOG sa 20.64
+09-Jun-21 4:23:42 PM Writer poslao CODE_ANALOG sa 20.64
+09-Jun-21 4:23:44 PM LB primio CODE_SOURCE sa 925.17
+09-Jun-21 4:23:44 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:44 PM Worker primio CODE_SOURCE sa 925.17
+09-Jun-21 4:23:44 PM Prosao deadband za CODE_SOURCE sa 925.17
+09-Jun-21 4:23:44 PM Upis u bazu CODE_SOURCE sa 925.17
+09-Jun-21 4:23:44 PM Writer poslao CODE_SOURCE sa 925.17
+09-Jun-21 4:23:46 PM LB primio CODE_CUSTOM sa 315.62
+09-Jun-21 4:23:46 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:46 PM Worker primio CODE_CUSTOM sa 315.62
+09-Jun-21 4:23:46 PM Prosao deadband za CODE_CUSTOM sa 315.62
+09-Jun-21 4:23:46 PM Upis u bazu CODE_CUSTOM sa 315.62
+09-Jun-21 4:23:46 PM Writer poslao CODE_CUSTOM sa 315.62
+09-Jun-21 4:23:49 PM LB primio CODE_DIGITAL sa 126.92
+09-Jun-21 4:23:49 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:49 PM Worker primio CODE_DIGITAL sa 126.92
+09-Jun-21 4:23:49 PM Prosao deadband za CODE_DIGITAL sa 126.92
+09-Jun-21 4:23:49 PM Upis u bazu CODE_DIGITAL sa 126.92
+09-Jun-21 4:23:49 PM Writer poslao CODE_DIGITAL sa 126.92
+09-Jun-21 4:23:51 PM LB primio CODE_CONSUMER sa 751.39
+09-Jun-21 4:23:51 PM LB prosledio parametre workeru 1
+09-Jun-21 4:23:51 PM Worker primio CODE_CONSUMER sa 751.39
+09-Jun-21 4:23:51 PM Prosao deadband za CODE_CONSUMER sa 751.39
+09-Jun-21 4:23:51 PM Upis u bazu CODE_CONSUMER sa 751.39
+09-Jun-21 4:23:51 PM Writer poslao CODE_CONSUMER sa 751.39
+09-Jun-21 4:23:51 PM Reader poslao zahtev workeru 1 za citanje 2 u periodu 06-Jun-21 5:31:00 PM-09-Jun-21 5:31:00 PM
+09-Jun-21 4:23:51 PM Worker1 primio zahtev od readera za CODE_DIGITAL u periodu 06-Jun-21 5:31:00 PM-09-Jun-21 5:31:00 PM
+09-Jun-21 4:23:51 PM Reader primio odgovor od workera sa 1 vrednosti
+09-Jun-21 4:23:53 PM LB primio CODE_ANALOG sa 101.32
+09-Jun-21 4:23:53 PM LB prosledio parametre workeru 2
+09-Jun-21 4:23:53 PM Worker primio CODE_ANALOG sa 101.32
+09-Jun-21 4:23:53 PM Prosao deadband za CODE_ANALOG sa 101.32
+09-Jun-21 4:23:53 PM Upis u bazu CODE_ANALOG sa 101.32
+09-Jun-21 4:23:53 PM Writer poslao CODE_ANALOG sa 101.32

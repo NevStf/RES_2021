@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -14,6 +15,7 @@ namespace LoadBalancer
     {
         static void Main(string[] args)
         {
+            Logger logger = new Logger();
             using (ServiceHost host = new ServiceHost(typeof(LBImplement)))
             {
                 string address = "net.tcp://localhost:4000/IWriter";
@@ -21,7 +23,7 @@ namespace LoadBalancer
                 host.AddServiceEndpoint(typeof(IWriter), binding, address);
 
                 host.Open();
-                
+                logger.WriteToFile(String.Format("{0} LB uspesno inicijalizovan i ceka poruke", DateTime.Now.ToString()));
                 Console.ReadKey();
                 host.Close();
             }

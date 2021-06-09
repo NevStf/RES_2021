@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using Contracts.Resources;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Reader
     {
         static void Main(string[] args)
         {
+            Logger logger = new Logger();
             ReaderClass r = new ReaderClass();
             ChannelFactory<IReader> proxy = new ChannelFactory<IReader>(new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:5000/IReader"));
 
@@ -29,9 +31,10 @@ namespace Reader
                     r.WriteElements(list);
                     Console.WriteLine("-------------------------");
                 }
-                catch(FaultException<CustomException> e)
+                catch (FaultException<CustomException> e)
                 {
                     Console.WriteLine(e.Detail.CMessage);
+                    logger.WriteToFile(string.Format("{0} {1}", DateTime.Now.ToString(), e.Detail.CMessage));
                 }
             }
         }

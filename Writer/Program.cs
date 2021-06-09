@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using Contracts.Resources;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Writer
 
         public static void ThreadZaSlanje()
         {
+            Logger logger = new Logger();
             ChannelFactory<IWriter> proxy = new ChannelFactory<IWriter>(new NetTcpBinding(),
               new EndpointAddress("net.tcp://localhost:4000/IWriter"));
 
@@ -34,6 +36,7 @@ namespace Writer
                 //Codes code = (Codes)(rand.Next(1, 3));
                 double value = Math.Round((rand1.NextDouble() * 1000), 2);
                 channel.WriterToLB(code, value);
+                logger.WriteToFile(String.Format("{0} Writer poslao {1} sa {2}", DateTime.Now.ToString(), code.ToString(), value));
                 Thread.Sleep(2000);
             }
 
@@ -46,6 +49,8 @@ namespace Writer
 
             IWriter channel = proxy.CreateChannel();
             Thread.Sleep(0);
+            Logger logger = new Logger();
+            logger.WriteToFile(String.Format("{0} Writer uspesno inicijalizovan", DateTime.Now.ToString()));
             Console.WriteLine("Writer thread 2 pokrenut");
             int res;
             do
@@ -61,14 +66,17 @@ namespace Writer
                     try
                     {
                         channel.TurnOnWorker();
+                        logger.WriteToFile(String.Format("{0} Writer poslao zahtev za paljenje workera", DateTime.Now.ToString()));
                     }
                     catch (FaultException<CustomException> e)
                     {
                         Console.WriteLine(e.Detail.CMessage);
+                        logger.WriteToFile(String.Format("{0} {1}", DateTime.Now.ToString(), e.Detail.CMessage));
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
+                        logger.WriteToFile(String.Format("{0} {1}", DateTime.Now.ToString(), e.Message));
                     }
                 }
                 else if (res == 2)
@@ -76,14 +84,17 @@ namespace Writer
                     try
                     {
                         channel.TurnOffWorker();
+                        logger.WriteToFile(String.Format("{0} Writer poslao zahtev za gasenje workera", DateTime.Now.ToString()));
                     }
                     catch (FaultException<CustomException> e)
                     {
                         Console.WriteLine(e.Detail.CMessage);
+                        logger.WriteToFile(String.Format("{0} {1}", DateTime.Now.ToString(), e.Detail.CMessage));
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
+                        logger.WriteToFile(String.Format("{0} {1}", DateTime.Now.ToString(), e.Message));
                     }
                 }
 

@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Logger;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -14,6 +15,7 @@ namespace Worker
     {
         static void Main(string[] args)
         {
+            Logger logger = new Logger();
             using (ServiceHost host = new ServiceHost(typeof(WorkerImplement)))
             {
                 string address = "net.tcp://localhost:5000/IWorker";
@@ -24,6 +26,7 @@ namespace Worker
 
                 host.Open();
                 Console.WriteLine("Worker pokrenut");
+                logger.WriteToFile(String.Format("{0} Worker uspesno pokrenut", DateTime.Now.ToString()));
                 Console.ReadKey();
                 host.Close();
             }

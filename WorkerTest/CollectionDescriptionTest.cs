@@ -25,7 +25,21 @@ namespace WorkerTest
             CollectionDescription cd = new CollectionDescription(1, dataSet);
             cd.AddToHistorical(dataSet, code, value);
             Assert.IsNotEmpty(cd.HistoricalCollection);
+            cd.AddToHistorical(dataSet, code, value);
+            Assert.AreEqual(cd.HistoricalCollection.Count, 1);
+        }
 
+        [Test]
+        [TestCase(1, Codes.CODE_LIMITSET, 321.4)]
+        public void AddToHistoricalTestTwoElements(int dataSet, Codes code, double value)
+        {
+            CollectionDescription cd = new CollectionDescription(1, dataSet);
+            cd.AddToHistorical(dataSet, code, value);
+            Assert.IsNotEmpty(cd.HistoricalCollection);
+            cd.AddToHistorical(dataSet, Codes.CODE_CUSTOM, value);
+            Assert.AreEqual(cd.HistoricalCollection.Count, 2);
+            cd.AddToHistorical(dataSet, Codes.CODE_CUSTOM, value);
+            Assert.AreEqual(cd.HistoricalCollection.Count, 2);
         }
 
     }
