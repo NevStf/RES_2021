@@ -4,6 +4,7 @@ using LoadBalancer;
 using Moq;
 using NUnit.Framework;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;
 using Worker;
 
@@ -89,6 +90,7 @@ namespace LoadBalancerTest
         }
 
         [Ignore("Baza")]
+        [ExcludeFromCodeCoverage]
         public void DistributeWorkTest()
         {
             ListDescription ld = new ListDescription();
@@ -111,6 +113,7 @@ namespace LoadBalancerTest
         }
 
         [Ignore("Lancani poziv do baze")]
+        [ExcludeFromCodeCoverage]
         public void SendToWorkerTest()
         {
             ListDescription ld = new ListDescription();
